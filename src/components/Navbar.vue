@@ -35,7 +35,7 @@ export default {};
 <style>
   .navbar-links {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
   }
 
   .nav-link {

@@ -51,7 +51,7 @@
 </template>
 
 <script>
-    import image from "@/assets/registerImg.png"
+    import image from "@/assets/img/registerImg.png"
 
     export default {
         data: function () {

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import paginaInicial from '../views/Main.vue'
-import anuncios from '../views/anuncios/Anuncios.vue'
-import anuncioEspecifico from '../views/anuncios/anuncioEspecifico.vue'
+import paginaInicial from '../views/paginaInicial.vue'
+import anuncios from '../views/Anuncios.vue'
+import anuncioEspecifico from '../views/anuncioEspecifico.vue'
 import login from '../views/login/login.vue'
 import registo from '../views/registo/registo.vue'
 

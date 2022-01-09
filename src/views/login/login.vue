@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import image from "@/assets/loginImg.png"
+    import image from "@/assets/img/loginImg.png"
 
     export default {
         data: function () {
