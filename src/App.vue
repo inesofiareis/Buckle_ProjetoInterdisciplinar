@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Navbar />
-    <div></div>
+
+    <router-view />
+    
     <Footer />
   </div>
 </template>
@@ -15,7 +17,16 @@ export default {
     Navbar,
     Footer,
   },
+  mounted() {
+    // window.addEventListener('load', () => {
+    //   if (!localStorage.getItem("users")) {
+    //     localStorage.setItem("users", JSON.stringify([
+    //     ]))
+    //   }
+    // })
+  },
 };
+
 </script>
 
 
@@ -43,11 +54,10 @@ export default {
 }
 
 :root {
-  --cor0: #010402;
-  --cor1: #1C2C54;
-  --cor2: #FADA5E;
-  --cor3: #4BC3B5;
-  --cor4: #CDF0E5;
+    --orange: #F17941;
+    --black: #353535;
+    --border: #ced4da;
+    --blue: #5266B7;
   --lightFont: 'Rubik Light';
   --regularFont: 'Rubik';
   --mediumFont: 'Rubik Medium';
@@ -63,7 +73,27 @@ export default {
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  #nav a.router-link-exact-active {
+    color: var(--orange);
+  }
+
+  
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  #nav {
+    padding: 30px;
+  }
+  
+  #nav a {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+
 </style>

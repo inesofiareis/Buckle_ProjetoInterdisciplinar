@@ -5,13 +5,15 @@ import anuncios from '../views/Anuncios.vue'
 import anuncioEspecifico from '../views/anuncioEspecifico.vue'
 import login from '../views/login/login.vue'
 import registo from '../views/registo/registo.vue'
+import gestaoUtilizadores from '../views/adminUsers.vue'
+import store from '../store/index.js'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Pagina Inicial',
+    name: 'PaginaInicial',
     component: paginaInicial
   },
   {
@@ -33,6 +35,14 @@ const routes = [
     path: '/registo',
     name: 'Registo',
     component: registo
+  },
+  {
+    path: '/admin/users',
+    name: 'Gestão de utilizadores',
+    component: gestaoUtilizadores,
+    meta: {
+      requiresAuth: true,
+    },
   }
 
 ]
@@ -40,5 +50,13 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !store.getters.getLoggedUser) {
+    next({ name: "Login" });
+  } else {
+    next();
+  }
+});
 
 export default router
