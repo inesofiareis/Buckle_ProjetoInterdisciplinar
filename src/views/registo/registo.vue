@@ -3,7 +3,7 @@
         <b-row style="margin-right: 0;">
           <b-col>
               <div class="">
-                  <img :src="image" class="register-image">
+                  <img src="../../assets/registerImg.png" class="register-image">
               </div>
           </b-col>
           <b-col>
@@ -18,23 +18,23 @@
                             </router-link>
                             <b-button type="button" class="register-btn2">Registo</b-button>
                         </div>
-                        <form action="">
+                        <form @submit.prevent="register">
                             <div class="form-names">
-                               <b-form-input type="text" class="first-name" required placeholder="Nome"></b-form-input>
-                               <b-form-input type="text" class="last-name" required placeholder="Sobrenome"></b-form-input>
+                               <b-form-input type="text" class="first-name" v-model="form.first_name" required placeholder="Nome"></b-form-input>
+                               <b-form-input type="text" class="last-name" v-model="form.last_name" required placeholder="Sobrenome"></b-form-input>
                             </div>
                             <div class="form-selects">
-                                <b-form-select v-model="cursos.selected" class="form-select cursos" required :options="cursos.options"></b-form-select>
-                                <b-form-select v-model="generos.selected" class="form-select generos" required :options="generos.options"></b-form-select>
+                                <b-form-select v-model="form.course.selected" class="form-select cursos"  :options="form.course.options"></b-form-select>
+                                <b-form-select v-model="form.gender.selected" class="form-select generos"  :options="form.gender.options"></b-form-select>
                             </div>
                             <div class="form-email2">
-                                <b-form-input type="email" required placeholder="Email do estudante"></b-form-input>
+                                <b-form-input type="email" v-model="form.email" required placeholder="Email do estudante"></b-form-input>
                             </div>
                             <div class="form-password">
-                                <b-form-input type="password" required placeholder="Password"></b-form-input>
+                                <b-form-input type="password" v-model="form.password" required placeholder="Password"></b-form-input>
                             </div>
                             <div class="form-confirm-password">
-                                <b-form-input type="password" required placeholder="Confirmar password"></b-form-input>
+                                <b-form-input type="password" v-model="form.confirm_password" required placeholder="Confirmar password"></b-form-input>
                             </div>    
                             <div class="form-submit2">
                                 <b-button type="submit">Criar conta</b-button>
@@ -51,33 +51,93 @@
 </template>
 
 <script>
-    import image from "@/assets/registerImg.png"
+    import { mapGetters, mapMutations } from "vuex";
 
     export default {
         data: function () {
             return {
-                image: image,
-                cursos : {
-                    selected: null,
-                    options: [
-                        { value: null, text: 'Curso' },
-                        { value: 'tsiw', text: 'TSIW' },
-                        { value: 'tcav', text: 'TCAV' },
-                        { value: 'design-grafico', text: 'Design Gráfico' },
-                        { value: 'design-industrial', text: 'Design Industrial'},
-                        { value: 'fotografia', text: 'Fotografia'},
-                        { value: 'multimedia', text: 'Multimédia'},
-                    ]
-                },
-                generos: {
-                    selected: null,
-                    options : [
-                        { value: null, text: 'Género' },
-                        { value: 'masculino', text: 'Masculino' },
-                        { value: 'feminino', text: 'Feminino' },
-                        { value: 'outro', text: 'Outro' },
-                    ]
-                }  
+                form : {
+                    first_name: '',
+                    last_name: '',
+                    course: {
+                        selected: null,
+                        options: [
+                            { value: null, text: 'Curso', disabled: true },
+                            { value: 'tsiw', text: 'TSIW' },
+                            { value: 'tcav', text: 'TCAV' },
+                            { value: 'design-grafico', text: 'Design Gráfico' },
+                            { value: 'design-industrial', text: 'Design Industrial'},
+                            { value: 'fotografia', text: 'Fotografia'},
+                            { value: 'multimedia', text: 'Multimédia'},
+                        ]
+                    },
+                    gender: {
+                        selected: null,
+                        options: [
+                            { value: null, text: 'Género', disabled: true },
+                            { value: 'masculino', text: 'Masculino' },
+                            { value: 'feminino', text: 'Feminino' },
+                            { value: 'outro', text: 'Outro' },
+                        ]
+                    },
+                    email: '',
+                    password: '',
+                    confirm_password: '',
+                }
+            }
+        },
+        computed: {
+            ...mapGetters(["isEmailRegistered"])
+        },
+        methods: {
+            ...mapMutations(["SET_NEW_USER"]),
+
+            register() {
+                const form_data = {
+                    first_name: this.form.first_name,
+                    last_name: this.form.last_name,
+                    course: this.form.course.selected,
+                    gender: this.form.gender.selected,
+                    email: this.form.email,
+                    password: this.form.password,
+                    role: "user",
+                    status: "active"
+                }
+
+                if(!this.isEmailRegistered(form_data.email)) {
+                    if (this.form.password === this.form.confirm_password) {
+                        if (this.form.password.length >= 8) {
+                            this.SET_NEW_USER(form_data)
+                            Swal.fire({
+                            icon: 'success',
+                            title: 'Sucesso',
+                            text: 'Agora já podes fazer login!',
+                            confirmButtonText: 'Entrar'
+                            })
+                        }
+                        else { Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'A tua password tem de ter pelo menos 8 carateres!',
+                            confirmButtonText: 'Tentar outra vez..'
+                            }) 
+                        }
+                    }
+                    else { Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'As passwords não coincidem!',
+                        confirmButtonText: 'Tentar outra vez..'
+                        })  
+                    }
+                }
+                else { Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Esse email já está registado noutra conta!',
+                    confirmButtonText: 'Tentar outra vez..'
+                    })  
+                }
             }
         }
     }

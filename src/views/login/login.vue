@@ -3,7 +3,7 @@
         <b-row style="margin-right: 0;">
           <b-col>
               <div class="">
-                  <img :src="image" class="login-image">
+                  <img src="../../assets/loginImg.png" class="login-image">
               </div>
           </b-col>
           <b-col>
@@ -18,12 +18,12 @@
                                 <b-button type="button" class="register-btn">Registo</b-button>
                             </router-link>
                         </div>
-                        <form action="">
+                        <form @submit.prevent="login">
                             <div class="form-email">
-                               <b-form-input type="email" required placeholder="Email de estudante"></b-form-input>
+                               <b-form-input type="email" v-model="form.email" required placeholder="Email de estudante"></b-form-input>
                             </div>
                             <div class="form-password">
-                                <b-form-input type="password" required placeholder="Password"></b-form-input>
+                                <b-form-input type="password" v-model="form.password" required placeholder="Password"></b-form-input>
                             </div>
                             <div class="form-submit">
                                 <b-button type="submit">Entrar</b-button>
@@ -40,12 +40,44 @@
 </template>
 
 <script>
-    import image from "@/assets/loginImg.png"
+    import { mapGetters, mapMutations } from "vuex";
 
     export default {
         data: function () {
             return {
-                image: image
+                form: {
+                    email: "",
+                    password: ""
+                }
+            }
+        },
+        computed: {
+            ...mapGetters(["isLoginValid"])
+        },
+        methods: {
+            ...mapMutations(["SET_LOGGED_USER"]),
+
+            login () {
+                if(this.isLoginValid(this.form.email, this.form.password)) {
+                    this.SET_LOGGED_USER(this.form.email)
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Bem vindo/a',
+                    text: 'Logado com sucesso!',
+                    confirmButtonText: 'Entrar'
+                }).then((result) => {  
+                    if (result.isConfirmed) {    
+                    	this.$router.push({name: 'PaginaInicial'}) 
+                    }
+                })}
+                else { 
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Credenciais erradas!',
+                    confirmButtonText: 'Tentar outra vez..'
+                })
+                }
             }
         }
     }
@@ -149,6 +181,14 @@
 
     .forgot-password > a:hover {
         color: #d3d3d3;
+    }
+
+    .swal2-styled.swal2-confirm {
+        background-color: var(--orange);
+    }
+
+    .swal2-styled.swal2-confirm:focus {
+        box-shadow: 0 0 0 3px transparent;
     }
 
 </style>
