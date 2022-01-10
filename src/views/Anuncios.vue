@@ -1,6 +1,6 @@
 <template>
   <div class="generalContainer">
-<!--     <div class="filterNavbar">
+    <!--     <div class="filterNavbar">
       <b-nav pills>
         <b-nav-item active>Active</b-nav-item>
         <b-nav-item>Link</b-nav-item>
@@ -18,28 +18,26 @@
       </b-nav>
     </div> -->
 
-  
-
-        <header class="masthead">
-        <div class="intro-body">
-            <b-container>
-                <b-row>
-                    <b-col col mx="auto" class="headerText">
-                        <h1 class="brand-heading">grayscale</h1>
-                        <p class="intro-text">A free, responsive, one page Bootstrap theme.<br>Created with love.</p>
-                    </b-col>
-
-                </b-row>
-            </b-container>
-        </div>
+    <header class="masthead">
+      <div class="intro-body">
+        <b-container>
+          <b-row>
+            <b-col col mx="auto" class="headerText">
+              <h1 class="headerTitle">Anúncios</h1>
+              <p class="headerSubTitle">
+                Finalmente, um espaço de união entre os alunos da ESMAD.
+              </p>
+            </b-col>
+          </b-row>
+        </b-container>
+      </div>
     </header>
 
-      <div>
-        <b-img blank-color="white" class="filterRectangle"></b-img>
+    <div>
+      <b-img blank-color="white" class="filterRectangle"></b-img>
     </div>
 
-
-<!--                 <b-form>
+    <!--                 <b-form>
                         <b-row>
                             <b-col cols="2">
                             <b-tabs pills>
@@ -73,96 +71,111 @@
                 </b-form>
  -->
 
-                
-
-
-
     <div class="adsContainer">
-        <b-container>
-            <b-row>
-                <b-col>
-                    <div>
-                        <b-card
-                            img-src="../assets/img/pedroNunesAnuncio.jpg"
-                            img-alt="Image"
-                            img-top
-                            img-height="210px"
-                            img-radius="15px"
-                            style="max-width: 385px;"
-                            class="cardAd "
-                        >
-
-                            <b-row>
-                                <b-col cols="3">
-                                    <img src="../assets/img/pedroNunes.jpg" class="cardAvatar" alt="" srcset="">
-                                </b-col>
-                                <b-col cols="9" class="cardContent">
-                                    <b-card-title class="cardTitle">Pedro Nunes<small class="titleCourse">de TCAV</small> </b-card-title>
-                                    <b-card-text class="cardText">
-                                    Preciso de alguém que tenha experiência em edição de vídeo.
-                                    </b-card-text>
-                                </b-col>
-                            </b-row>
-                        </b-card>
-                    </div>
-                </b-col>
-                <b-col>
-                    <div>
-                        <b-card
-                            img-src="../assets/img/pedroNunesAnuncio.jpg"
-                            img-alt="Image"
-                            img-top
-                            img-height="210px"
-                            img-radius="15px"
-                            style="max-width: 385px;"
-                            class="cardAd "
-                        >
-
-                            <b-row>
-                                <b-col cols="3">
-                                    <img src="../assets/img/pedroNunes.jpg" class="cardAvatar" alt="" srcset="">
-                                </b-col>
-                                <b-col cols="9" class="cardContent">
-                                    <b-card-title class="cardTitle">Pedro Nunes<small class="titleCourse">de TCAV</small> </b-card-title>
-                                    <b-card-text class="cardText">
-                                    Preciso de alguém que tenha experiência em edição de vídeo.
-                                    </b-card-text>
-                                </b-col>
-                            </b-row>
-                        </b-card>
-                    </div>
-                </b-col>
-                <b-col>
-                    <div>
-                        <b-card
-                            img-src="../assets/img/pedroNunesAnuncio.jpg"
-                            img-alt="Image"
-                            img-top
-                            img-height="210px"
-                            img-radius="15px"
-                            style="max-width: 385px;"
-                            class="cardAd "
-                        >
-
-                            <b-row>
-                                <b-col cols="3">
-                                    <img src="../assets/img/pedroNunes.jpg" class="cardAvatar" alt="" srcset="">
-                                </b-col>
-                                <b-col cols="9" class="cardContent">
-                                    <b-card-title class="cardTitle">Pedro Nunes<small class="titleCourse">de TCAV</small> </b-card-title>
-                                    <b-card-text class="cardText">
-                                    Preciso de alguém que tenha experiência em edição de vídeo.
-                                    </b-card-text>
-                                </b-col>
-                            </b-row>
-                        </b-card>
-                    </div>
-                </b-col>
-            </b-row>
-        </b-container>
-        </div>
-    
-
+      <b-container>
+        <b-row>
+          <b-col>
+            <div>
+              <b-card
+                img-src="../assets/img/pedroNunesAnuncio.jpg"
+                img-alt="Image"
+                img-top
+                img-height="210px"
+                img-radius="15px"
+                style="max-width: 385px"
+                class="cardAd"
+              >
+                <b-row>
+                  <b-col cols="3">
+                    <img
+                      src="../assets/img/pedroNunes.jpg"
+                      class="cardAvatar"
+                      alt=""
+                      srcset=""
+                    />
+                  </b-col>
+                  <b-col cols="9" class="cardContent">
+                    <b-card-title class="cardTitle"
+                      >Pedro Nunes<small class="titleCourse">de TCAV</small>
+                    </b-card-title>
+                    <b-card-text class="cardText">
+                      Preciso de alguém que tenha experiência em edição de
+                      vídeo.
+                    </b-card-text>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </div>
+          </b-col>
+          <b-col>
+            <div>
+              <b-card
+                img-src="../assets/img/pedroNunesAnuncio.jpg"
+                img-alt="Image"
+                img-top
+                img-height="210px"
+                img-radius="15px"
+                style="max-width: 385px"
+                class="cardAd"
+              >
+                <b-row>
+                  <b-col cols="3">
+                    <img
+                      src="../assets/img/pedroNunes.jpg"
+                      class="cardAvatar"
+                      alt=""
+                      srcset=""
+                    />
+                  </b-col>
+                  <b-col cols="9" class="cardContent">
+                    <b-card-title class="cardTitle"
+                      >Pedro Nunes<small class="titleCourse">de TCAV</small>
+                    </b-card-title>
+                    <b-card-text class="cardText">
+                      Preciso de alguém que tenha experiência em edição de
+                      vídeo.
+                    </b-card-text>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </div>
+          </b-col>
+          <b-col>
+            <div>
+              <b-card
+                img-src="../assets/img/pedroNunesAnuncio.jpg"
+                img-alt="Image"
+                img-top
+                img-height="210px"
+                img-radius="15px"
+                style="max-width: 385px"
+                class="cardAd"
+              >
+                <b-row>
+                  <b-col cols="3">
+                    <img
+                      src="../assets/img/pedroNunes.jpg"
+                      class="cardAvatar"
+                      alt=""
+                      srcset=""
+                    />
+                  </b-col>
+                  <b-col cols="9" class="cardContent">
+                    <b-card-title class="cardTitle"
+                      >Pedro Nunes<small class="titleCourse">de TCAV</small>
+                    </b-card-title>
+                    <b-card-text class="cardText">
+                      Preciso de alguém que tenha experiência em edição de
+                      vídeo.
+                    </b-card-text>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </div>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
 
     <div class="showAds">
       <b-button class="btnShow">Carregar Mais</b-button>
@@ -171,134 +184,136 @@
 </template>
 
 <style scoped>
-
 .generalContainer {
-    background: #E5E5E5;
+  background: #e5e5e5;
 }
 
-.masthead{
-    background-image: url("../assets/img/pedroNunes.jpg");
-    height: 507px;
-
-    margin-bottom: 80px;
-    object-fit: fill;
-
-}
-
-.filterRectangle{
-    position: relative;
-    width: 80%;
-height: 167px;
-left: 0px;
-top: -110px;
-
-background: #F1F1F1;
-border: 1px solid rgba(241, 121, 65, 0.5);
-box-sizing: border-box;
-border-radius: 10px;
+.masthead {
+  background-image: url("../assets/img/anunciosPage.jpg");
+  height: 507px;
+  margin-bottom: 80px;
 
 }
 
-.headerText{
-    position: absolute;
-    top: 30%;
-    left: 25%;
-    line-height: 43px;
-    text-align: center;
-    z-index: 10;
-    color: white;
+.filterRectangle {
+  position: relative;
+  width: 80%;
+  height: 167px;
+  left: 0px;
+  top: -110px;
+
+  background: #f1f1f1;
+  border: 1px solid rgba(241, 121, 65, 0.5);
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
-.btnFilter{
-    background: #F17941;
-    border-radius: 5px;
+.headerText {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  line-height: 43px;
+  text-align: center;
+  z-index: 10;
+  color: white;
 }
 
-#searchInput{
-    height: 35px;
-    width: 230px;
-    background: #FFFFFF;
-    border: 1px solid rgba(241, 121, 65, 0.6);
-    box-sizing: border-box;
-    border-radius: 5px;
-    }
+.headerTitle{
+font-weight: 500;
+font-size: 96px;
+line-height: 114px;
+}
 
-.filterSelect{
-    height: 35px;
-    width: 180px;
-    background: #FFFFFF;
-    border: 1px solid rgba(241, 121, 65, 0.6);
-    box-sizing: border-box;
-    border-radius: 5px;
+.headerSubTitle{
+font-weight: 300;
+font-size: 36px;
+line-height: 43px;
+}
+
+.btnFilter {
+  background: #f17941;
+  border-radius: 5px;
+}
+
+#searchInput {
+  height: 35px;
+  width: 230px;
+  background: #ffffff;
+  border: 1px solid rgba(241, 121, 65, 0.6);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.filterSelect {
+  height: 35px;
+  width: 180px;
+  background: #ffffff;
+  border: 1px solid rgba(241, 121, 65, 0.6);
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 .cardAd {
-    height: 310px;
-    background: rgba(255, 255, 255, 0.692);
-    border: 1px solid rgba(53, 53, 53, 0.8);
-    box-sizing: border-box;
-    border-radius: 15px 15px 15px 15px;
+  height: 310px;
+  background: rgba(255, 255, 255, 0.692);
+  border: 1px solid rgba(53, 53, 53, 0.8);
+  box-sizing: border-box;
+  border-radius: 15px 15px 15px 15px;
 }
 
-.cardAvatar{
-position: absolute;
-width: 72.86px;
-height: 72.86px;
-left: 10px;
-object-fit:cover;
-border: 1px solid #353535;
-box-sizing: border-box;
-border-radius: 10px;
-transform: matrix(1, 0, 0, 1, 0, 0);
+.cardAvatar {
+  position: absolute;
+  width: 72.86px;
+  height: 72.86px;
+  left: 10px;
+  object-fit: cover;
+  border: 1px solid #353535;
+  box-sizing: border-box;
+  border-radius: 10px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 .cardContent {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-.cardTitle{
-    font-family: var(--mediumFont);
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 15px;
-    display: flex;
-    align-items: center;
+.cardTitle {
+  font-family: var(--mediumFont);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
 
-    color: #353535;
-
+  color: #353535;
 }
 
-.titleCourse{
-    font-family: var(--regularFont);
-    font-size: 16px;
-    margin-left: 5px ;
-    color: rgba(53, 53, 53, 0.48);
-
+.titleCourse {
+  font-family: var(--regularFont);
+  font-size: 16px;
+  margin-left: 5px;
+  color: rgba(53, 53, 53, 0.48);
 }
 
 .cardText {
-    font-family: var(--regularFont);
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 18px;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    color: #353535;
+  font-family: var(--regularFont);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  color: #353535;
 }
 
-.btnShow{
-    width: 149px;
-    height: 38px;
-    background: #F17941;
-    border-radius: 5px;
-    border: none;
-    margin-top: 50px;
-    margin-bottom: 50px;
+.btnShow {
+  width: 149px;
+  height: 38px;
+  background: #f17941;
+  border-radius: 5px;
+  border: none;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
-
-
-
-
 </style>
