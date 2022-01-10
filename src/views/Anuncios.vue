@@ -20,17 +20,19 @@
 
   
 
-    <div>
+        <header class="masthead">
+        <div class="intro-body">
+            <b-container>
+                <b-row>
+                    <b-col col mx="auto" class="headerText">
+                        <h1 class="brand-heading">grayscale</h1>
+                        <p class="intro-text">A free, responsive, one page Bootstrap theme.<br>Created with love.</p>
+                    </b-col>
 
-        <div class="headerText">
-        <h2>Anúncios</h2>
-        <h3>Finalmente, um espaço de união entre os alunos da ESMAD.</h3>
+                </b-row>
+            </b-container>
         </div>
-
-        <img src="../assets/img/pedroNunes.jpg" alt="" srcset="" class="coverImage">
-
-
-    </div>
+    </header>
 
       <div>
         <b-img blank-color="white" class="filterRectangle"></b-img>
@@ -174,20 +176,18 @@
     background: #E5E5E5;
 }
 
-.coverImage{
-    position: relative;
-    width: 1541px;
+.masthead{
+    background-image: url("../assets/img/pedroNunes.jpg");
     height: 507px;
-    top: 0px;
-    left: -7px;
+
     margin-bottom: 80px;
-    object-fit: cover;
+    object-fit: fill;
 
 }
 
 .filterRectangle{
     position: relative;
-width: 1324px;
+    width: 80%;
 height: 167px;
 left: 0px;
 top: -110px;
