@@ -1,9 +1,9 @@
 <template>
-    <div class="background-container">
+    <div class="background-container login" >
         <b-row style="margin-right: 0;">
           <b-col>
               <div class="">
-                  <img src="../../assets/loginImg.png" class="login-image">
+                  <img src="../../assets/img/loginImg.png" class="login-image">
               </div>
           </b-col>
           <b-col>
@@ -91,12 +91,8 @@
         --border: #ced4da;
     }
 
-           
-    button {
-        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    }
 
-    button:hover {
+    .login button:hover {
         background-color: var(--black) !important;
     }
 
@@ -117,7 +113,8 @@
         width: 40%;
         background-color: #fafafa;
         border-radius: 5%;
-        padding: 20px 20px 40px 20px;
+        margin-bottom: 10%;
+        padding: 20px 20px 20px 20px;
     }
 
     .login-form-header {

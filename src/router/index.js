@@ -14,7 +14,7 @@ const routes = [
   {
     path: '/',
     name: 'PaginaInicial',
-    component: paginaInicial
+    component: paginaInicial,
   },
   {
     path: '/anuncios',
@@ -29,12 +29,18 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: login
+    component: login,
+    meta: {
+      onlyWithoutAuth: true,
+    }
   },
   {
     path: '/registo',
     name: 'Registo',
-    component: registo
+    component: registo,
+    meta: {
+      onlyWithoutAuth: true,
+    }
   },
   {
     path: '/admin/users',
@@ -42,19 +48,37 @@ const routes = [
     component: gestaoUtilizadores,
     meta: {
       requiresAuth: true,
+      requiresAdmin: true
     },
   }
 
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior () {
+    return { x: 0, y: 0 }
+  }
 })
+
+
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !store.getters.getLoggedUser) {
     next({ name: "Login" });
-  } else {
+  } 
+  else if (to.meta.onlyWithoutAuth && store.getters.getLoggedUser) {
+    next({ name: "PaginaInicial" });
+  }
+  else if (to.meta.requiresAuth && to.meta.requiresAdmin && store.getters.getLoggedUser) {
+    if(store.getters.getLoggedUser.role == 'user') {
+      next({name: 'PaginaInicial'})
+    }
+    else{
+      next()
+    }
+  }
+  else {
     next();
   }
 });

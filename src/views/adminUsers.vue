@@ -19,7 +19,7 @@
                     <td>{{user.gender}}</td>
                     <td>{{user.course}}</td>
                     <td><b-button v-if="user.status == 'active'" @click="blockUser(index)" variant="success">Block</b-button>
-                        <b-button v-if="user.status == 'blocked'" @click="unblockUser(index)" variant="danger">UnBlock</b-button> <b-button variant="info">Editar</b-button></td>
+                        <b-button v-if="user.status == 'blocked'" @click="unblockUser(index)" variant="danger">UnBlock</b-button> <b-button variant="dark">Editar</b-button></td>
                 </tr>
             </tbody>
         </table>

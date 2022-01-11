@@ -1,36 +1,43 @@
 <template>
-  <div>
-    <div id="nav" :style="[this.$route.path != '/admin/users' ? {'position': 'absolute'} : {}]" >
-      <nav class="container navbar navbar-content navbar-expand-lg">
-        <router-link to="/" class="navbar-brand">Buckle</router-link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse navbar-links" id="navbarSupportedContent">
-          <div class="navbar-nav mr-auto">
-            <router-link to="/Anuncios" class="nav-item nav-link">Anúncios</router-link>
-            <router-link to="/Projetos" class="nav-link">Projetos</router-link>
-            <router-link to="/Perfil" class="nav-link">Conta</router-link>
-          </div>
-          <div class="login-link">
-            <router-link :to="{ path: 'login' }" class="nav-item nav-link login" v-if="CurrentPath() == '/login'">Login</router-link>
-            <router-link :to="{ path: 'login' }" class="nav-item nav-link registo" v-else-if="CurrentPath() == '/registo'">Registo</router-link>
-            <router-link :to="{ path: 'login' }" class="nav-item nav-link" v-else>Entrar</router-link>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </div>
+  <b-navbar toggleable="lg" id="nav" type="dark" variant="dark">
+    <b-navbar-brand href="#"><router-link to="/" class="navbar-brand">Buckle</router-link></b-navbar-brand>
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav class="mx-auto navbarContent">
+        <b-nav-item><router-link to="/" class="nav-link" >Página inicial</router-link></b-nav-item>
+        <b-nav-item><router-link to="/anuncios" class="nav-item nav-link">Anúncios</router-link></b-nav-item>
+        <b-nav-item><router-link to="/projetos" class="nav-link">Projetos</router-link></b-nav-item>
+        <b-nav-item><router-link to="/sobre" class="nav-link">Sobre</router-link></b-nav-item>
+      </b-navbar-nav>
+      <b-navbar-nav class="ml-auto">
+        <b-nav-item v-if="loggedUser()">
+          <b-nav-item-dropdown class="user-dropdown" >
+            <template #button-content>{{loggedUser().first_name}}</template>
+            <b-dropdown-item id="dropdown-perfil" href="#">Perfil</b-dropdown-item>
+            <b-dropdown-item id="dropdown-anuncios" href="#">Anúncios</b-dropdown-item>
+            <b-dropdown-item id="dropdown-projetos" href="#">Projetos</b-dropdown-item>
+            <b-dropdown-divider v-if="this.$store.getters.getLoggedUser.role == 'admin'"></b-dropdown-divider>
+            <b-dropdown-item id="dropdown-admin-users" @click="$router.push({name: 'Gestão de utilizadores'})" v-if="this.$store.getters.getLoggedUser.role == 'admin'" href="#">Gestão Utilizadores</b-dropdown-item>
+            <b-dropdown-item id="dropdown-admin-anuncios" v-if="this.$store.getters.getLoggedUser.role == 'admin'" href="#">Gestão Anúncios</b-dropdown-item>
+            <b-dropdown-item id="dropdown-admin-projetos" v-if="this.$store.getters.getLoggedUser.role == 'admin'" href="#">Gestão Projetos</b-dropdown-item>
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item id="dropdown-leave" href="#" @click="logOut()">Sair</b-dropdown-item>
+          </b-nav-item-dropdown>
+        </b-nav-item>
+        <b-nav-item v-else class="account-link">
+          <router-link :to="{ path: 'login' }" class="nav-item nav-link login" v-if="CurrentPath() == '/login'">Login</router-link>
+          <router-link :to="{ path: 'login' }" class="nav-item nav-link registo" v-else-if="CurrentPath() == '/registo'">Registo</router-link>
+          <router-link :to="{ path: 'login' }" class="nav-item nav-link" v-else>Entrar</router-link>
+        </b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
+
 export default {
   data: function () {
     return {
@@ -42,9 +49,40 @@ export default {
       ],
     }
   },
+  computed: {
+    ...mapGetters(['getLoggedUser'])
+  },
   methods: {
+    ...mapMutations(['SIGNOUT_USER']),
+
     CurrentPath() {
       return this.$route.path
+    },
+    loggedUser () {
+      return this.getLoggedUser
+    },
+    logOut() {
+      Swal.fire({
+      title: 'Atenção!',
+      text: "Tens a certeza que queres sair da tua conta ?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não'
+      }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Adeus!',
+          'Foste deslogado com sucesso.',
+          'Ok'
+        ).then(() => {
+          this.$router.push({ name: "PaginaInicial"})
+        })
+        this.SIGNOUT_USER()
+      }
+      })
     }
   }
   
@@ -53,37 +91,16 @@ export default {
 
 <style>
 
-  :root {
-    --orange: #F17941;
-    --black: #353535;
-    --border: #ced4da;
-    --blue: #5266B7;
-  }
-
-  .navbar-links {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .nav-link {
-    margin-left: 65px;
-  }
-
   #nav {
-    margin: 0;
-    padding: 20px 5px 0px 5px !important;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 2;
+    padding: 20px 100px !important;
   }
 
-  .navbar-content {
-    margin: 0;
-    padding: 30;
-    width: 100%;
-    background: transparent;
-    border-bottom: 1px solid #35353538;
+  #nav a a {
+    color: rgb(235, 235, 235);
+  }
+
+  #nav a a:hover {
+    color: var(--orange);
   }
 
   .navbar-brand {
@@ -92,16 +109,57 @@ export default {
     color: white !important;
   }
 
-  .login-link > a {
-    margin-left: 200px !important;
+  .navbarContent > .nav-item {
+    margin: 0 25px;
   }
 
-  .login-link > .login {
+  .account-link > a > .login {
     color: var(--orange) !important;
   }
 
-  .login-link > .registo {
+  .account-link > a > .registo {
     color: var(--blue) !important;
   }
+
+  .user-dropdown > ul {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    right: -65px;
+  }
+
+  .user-dropdown > button {
+    background-color: var(--orange) !important;
+    border: none;
+    font-weight: bold;
+  }
+
+  #dropdown-perfil, #dropdown-anuncios, #dropdown-projetos, #dropdown-leave {
+    color: var(--black) !important;
+  }
+
+  #dropdown-perfil:hover, #dropdown-anuncios:hover, #dropdown-projetos:hover, #dropdown-leave:hover {
+    background-color: var(--orange);
+    color: white !important;
+    transition: 0.5s ease;
+  }
+
+  #dropdown-admin-users, #dropdown-admin-anuncios, #dropdown-admin-projetos {
+    color: rgb(220, 20, 20) !important;
+  }
+
+  #dropdown-admin-users:hover, #dropdown-admin-anuncios:hover, #dropdown-admin-projetos:hover {
+    color: white !important;
+    background-color: rgb(220, 20, 20) !important;
+    transition: 0.5s ease;
+  }
+
+  #dropdown-leave {
+    color: var(--orange) !important;
+  }
+
+  #dropdown-leave:hover {
+    color: white !important;
+  }
+
 
 </style>

@@ -27,7 +27,7 @@ export default new Vuex.Store({
         status: "active"
       }
     ],
-    loggedUser: null,
+    loggedUser: localStorage.loggedUser ? JSON.parse(localStorage.loggedUser) : null
   },
   getters: {
     isLoginValid: (state) => (email, password) => state.users.some(
@@ -47,6 +47,10 @@ export default new Vuex.Store({
     SET_LOGGED_USER(state, payload) {
       state.loggedUser = state.users.find((user) => user.email === payload);
       localStorage.loggedUser = JSON.stringify(state.loggedUser);
+    },
+    SIGNOUT_USER(state) {
+      state.loggedUser = null
+      localStorage.removeItem('loggedUser')
     },
     SET_USER_BLOCKED(state,payload) {
       state.users[payload].status = 'blocked'
