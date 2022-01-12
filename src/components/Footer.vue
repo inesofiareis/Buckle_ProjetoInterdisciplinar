@@ -80,6 +80,10 @@ export default {
         margin: 60px 150px 30px 150px;
     }
 
+    footer button:hover {
+        background-color: var(--black) !important;
+    }
+
     .footer-left-side {
         padding-right: 0 !important;
         border-right: 1px solid var(--border);

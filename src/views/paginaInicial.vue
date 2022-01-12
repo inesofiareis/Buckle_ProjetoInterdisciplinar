@@ -10,7 +10,7 @@
                   <b-media tag="li">
                     <template #aside>
                       <b-img
-                        src="../assets/paginaInicial/icons8-thinking-64.png"
+                        src="../assets/img/icons8-thinking-64.png"
                       ></b-img>
                     </template>
                     <h5 class="mt-0 mb-1">
@@ -21,7 +21,7 @@
                   <b-media tag="li" class="my-4">
                     <template #aside>
                       <b-img
-                        src="../assets/paginaInicial/icons8-idea-64 (1).png"
+                        src="../assets/img/paginaInicial/icons8-idea-64 (1).png"
                       ></b-img>
                     </template>
 
@@ -33,7 +33,7 @@
                   <b-media tag="li">
                     <template #aside>
                       <b-img
-                        src="../assets/paginaInicial/icons8-idea-64 (1).png"
+                        src="../assets/img/paginaInicial/icons8-idea-64 (1).png"
                       ></b-img>
                     </template>
 

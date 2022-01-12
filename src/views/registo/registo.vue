@@ -1,9 +1,9 @@
 <template>
-    <div class="background-container">
+    <div class="background-container register">
         <b-row style="margin-right: 0;">
           <b-col>
               <div class="">
-                  <img src="../../assets/registerImg.png" class="register-image">
+                  <img src="../../assets/img/registerImg.png" class="register-image">
               </div>
           </b-col>
           <b-col>
@@ -157,7 +157,7 @@
         transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
 
-    button:hover {
+    .register button:hover {
         background-color: var(--black) !important;
     }
 
