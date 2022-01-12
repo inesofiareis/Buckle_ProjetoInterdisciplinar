@@ -178,7 +178,7 @@ export default {
 };
 </script>
     
-<style lang="css">
+<style scoped>
 :root {
   --orange: #f17941;
   --black: #353535;

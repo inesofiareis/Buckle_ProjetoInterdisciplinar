@@ -70,7 +70,7 @@
                         </b-row>
                 </b-form>
  -->
-
+  
     <div class="adsContainer">
       <b-container>
         <b-row>
@@ -107,39 +107,7 @@
               </b-card>
             </div>
           </b-col>
-          <b-col>
-            <div>
-              <b-card
-                img-src="../assets/img/pedroNunesAnuncio.jpg"
-                img-alt="Image"
-                img-top
-                img-height="210px"
-                img-radius="15px"
-                style="max-width: 385px"
-                class="cardAd"
-              >
-                <b-row>
-                  <b-col cols="3">
-                    <img
-                      src="../assets/img/pedroNunes.jpg"
-                      class="cardAvatar"
-                      alt=""
-                      srcset=""
-                    />
-                  </b-col>
-                  <b-col cols="9" class="cardContent">
-                    <b-card-title class="cardTitle"
-                      >Pedro Nunes<small class="titleCourse">de TCAV</small>
-                    </b-card-title>
-                    <b-card-text class="cardText">
-                      Preciso de alguém que tenha experiência em edição de
-                      vídeo.
-                    </b-card-text>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </div>
-          </b-col>
+          
           <b-col>
             <div>
               <b-card
@@ -176,11 +144,56 @@
         </b-row>
       </b-container>
     </div>
+    
 
     <div class="showAds">
       <b-button class="btnShow">Carregar Mais</b-button>
     </div>
+
+  <b-container>
+    <b-row>
+      <b-col>
+            <div>
+              <b-card
+                img-src="../assets/img/pedroNunesAnuncio.jpg"
+                img-alt="Image"
+                img-top
+                img-height="210px"
+                img-radius="15px"
+                style="max-width: 385px"
+                class="cardAd"
+              >
+                <b-row>
+                  <b-col cols="3">
+                    <img
+                      src="../assets/img/pedroNunes.jpg"
+                      class="cardAvatar"
+                      alt=""
+                      srcset=""
+                    />
+                  </b-col>
+                  <b-col cols="9" class="cardContent">
+                    <b-card-title class="cardTitle"
+                      >Pedro Nunes<small class="titleCourse">de TCAV</small>
+                    </b-card-title>
+                    <b-card-text class="cardText">
+                      Preciso de alguém que tenha experiência em edição de
+                      vídeo.
+                    </b-card-text>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </div>
+          </b-col>
+    </b-row>
+  </b-container>
+
+
+
+
+
   </div>
+  
 </template>
 
 <style scoped>

@@ -83,7 +83,7 @@
     }
 </script>
     
-<style lang="css">
+<style scoped>
 
     :root {
         --orange: #F17941;
