@@ -18,8 +18,8 @@
                 <i class="favouritesNumber"> 35 </i> favoritos
               </p>
             </div>
-            <br>
-            <br>
+            <br />
+            <br />
             <div class="adSpecificSummary">
               <p>
                 Tiro fotografias de cenários para qualquer um de vós! Basta me
@@ -79,18 +79,15 @@ export default {};
   color: #353535;
 }
 
-.announcerName{
-  float:left;
+.announcerName {
+  float: left;
   font-size: 20px;
-line-height: 24px;
-color: #353535;
-font-family: var(--regularFont);
+  line-height: 24px;
+  color: #353535;
+  font-family: var(--regularFont);
 }
 
-.containerFavourites{
-  float:right;
+.containerFavourites {
+  float: right;
 }
-
-
-
 </style>
