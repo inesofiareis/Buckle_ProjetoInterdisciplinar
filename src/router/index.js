@@ -7,6 +7,7 @@ import login from '../views/login/login.vue'
 import registo from '../views/registo/registo.vue'
 import gestaoUtilizadores from '../views/adminUsers.vue'
 import store from '../store/index.js'
+import perfil from '../views/perfil.vue'
 
 Vue.use(VueRouter)
 
@@ -41,6 +42,11 @@ const routes = [
     meta: {
       onlyWithoutAuth: true,
     }
+  },
+  {
+    path: '/perfil',
+    name: 'perfil',
+    component: perfil
   },
   {
     path: '/admin/users',
