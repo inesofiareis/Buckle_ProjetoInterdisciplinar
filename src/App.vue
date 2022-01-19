@@ -57,6 +57,7 @@ export default {
     --orange: #F17941;
     --black: #353535;
     --border: #ced4da;
+    --cardDisable: #D5D5D5;
     --blue: #5266B7;
   --lightFont: 'Rubik Light';
   --regularFont: 'Rubik';

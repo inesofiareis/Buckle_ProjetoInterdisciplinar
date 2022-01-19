@@ -6,6 +6,7 @@ import anuncioEspecifico from '../views/anuncioEspecifico.vue'
 import login from '../views/login/login.vue'
 import registo from '../views/registo/registo.vue'
 import gestaoUtilizadores from '../views/adminUsers.vue'
+import chat from '../views/chat.vue'
 import store from '../store/index.js'
 import perfil from '../views/perfil.vue'
 
@@ -56,6 +57,14 @@ const routes = [
       requiresAuth: true,
       requiresAdmin: true
     },
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: chat,
+    meta: {
+      requiresAuth: true,
+    }
   }
 
 ]
