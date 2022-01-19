@@ -14,7 +14,15 @@ export default new Vuex.Store({
         email: "user@esmad.ipp.pt",
         password: "Esmad_2122",
         role: "user",
-        status: "active"
+        status: "active",
+        ads: [{
+          type: "Procura",
+          title: "Website",
+          favourites: 1,
+          description: "Olá sou lindo",
+          nHours: "50000",
+          photo: "../assets/img/pedroNunesAnuncio.jpg",
+        },],
       },
       {
         first_name: "Test",
@@ -24,7 +32,16 @@ export default new Vuex.Store({
         email: "admin@esmad.ipp.pt",
         password: "Esmad_2122",
         role: "admin",
-        status: "active"
+        status: "active",
+        ads: [      {
+          type: "Oferta",
+          title: "Fotografias",
+          favourites: 30,
+          description: "Olá sou linda",
+          nHours: "25-30",
+          photo: "../assets/img/pedroNunesAnuncio.jpg",
+        },
+      ],
       }
     ],
     loggedUser: localStorage.loggedUser ? JSON.parse(localStorage.loggedUser) : null
@@ -37,7 +54,10 @@ export default new Vuex.Store({
       (user) => user.email === email
     ),
     getUsers: (state) => state.users,
+
     getLoggedUser: (state) => state.loggedUser,
+
+    ads: (state) => state.users,
   },
   mutations: {
     SET_NEW_USER(state, payload) {
