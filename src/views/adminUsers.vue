@@ -27,40 +27,37 @@
 </template>
 
 <script>
-    import { mapMutations } from "vuex";
+import { mapMutations } from "vuex";
 
-    export default {
-        data: function() {
-            return {
-                usersData : []
-            }
-        },
-        mounted() {
-            this.usersData = this.$store.state.users
-        },
-        methods: {
-            ...mapMutations(["SET_USER_BLOCKED" , "SET_USER_ACTIVE"]),
+export default {
+  data: function () {
+    return {
+      usersData: [],
+    };
+  },
+  mounted() {
+    this.usersData = this.$store.state.users;
+  },
+  methods: {
+    ...mapMutations(["SET_USER_BLOCKED", "SET_USER_ACTIVE"]),
 
-            blockUser(idx) {
-                for(const user of this.$store.state.users) {
-                    if(this.$store.state.users.indexOf(user) == idx) {
-                        this.SET_USER_BLOCKED(idx)
-                    }
-                }
-            },
-            unblockUser(idx) {
-                for(const user of this.$store.state.users) {
-                    if(this.$store.state.users.indexOf(user) == idx) {
-                        this.SET_USER_ACTIVE(idx)
-                    }
-                }
-            }
+    blockUser(idx) {
+      for (const user of this.$store.state.users) {
+        if (this.$store.state.users.indexOf(user) == idx) {
+          this.SET_USER_BLOCKED(idx);
         }
-    }
-
-
+      }
+    },
+    unblockUser(idx) {
+      for (const user of this.$store.state.users) {
+        if (this.$store.state.users.indexOf(user) == idx) {
+          this.SET_USER_ACTIVE(idx);
+        }
+      }
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>
