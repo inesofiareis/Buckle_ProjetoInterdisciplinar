@@ -3,7 +3,7 @@
         <b-row style="margin-right: 0;">
           <b-col>
               <div class="">
-                  <img src="../../assets/img/loginImg.png" class="login-image">
+                  <img src="../assets/img/loginImg.png" class="login-image">
               </div>
           </b-col>
           <b-col>

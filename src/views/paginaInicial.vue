@@ -20,7 +20,7 @@
         </div>
     </header>
 
-    <section>
+    <section class="firstBlock">
       <b-container>
         <b-row align-v="center">
           <b-col col lg="6" order="2">
@@ -76,7 +76,7 @@
       </b-container>
     </section>
 
-    <section>
+    <section class="secondBlock">
       <b-container>
         <b-row align-v="center">
           <b-col col lg="6" order="1">
@@ -87,7 +87,7 @@
             </div>
           </b-col>
           <b-col col lg="6" order="2">
-            <div class="p-5">
+            <div class="p-5 classAnuncios">
               <h2 class="display-4 mediumFont mainHeaders">
                 <i> Anúncios: </i> A melhor forma de obteres aquilo que procuras
               </h2>
@@ -103,7 +103,7 @@
         </b-row>
       </b-container>
     </section>
-    <section>
+    <section class="thirdBlock">
       <b-container>
         <b-row align-v="center">
           <b-col col lg="6" order="2">
@@ -112,7 +112,7 @@
             </div>
           </b-col>
           <b-col col lg="6" order="1">
-            <div class="p-5">
+            <div class="p-5  divProjetos">
               <h2 class="display-4 mediumFont mainHeaders">
                 <i>Projetos: </i> Dá a conhecer o teu potencial
               </h2>
@@ -129,7 +129,7 @@
       </b-container>
     </section>
 
-    <section>
+    <section class="fourthBlock">
       <b-container>
         <div>
           <h2 class="text-center">Os anúncios mais recentes</h2>
@@ -163,11 +163,97 @@
       </b-container>
     </section>
 
-    <section>
+    <section class="fifthBlock">
       <b-container>
         <div>
           <h2 class="text-center">Os projetos mais recentes</h2>
         </div>
+        
+
+
+        <b-row>
+          <b-col>
+            <div>
+              <b-card
+                img-src="../assets/img/pedroNunesAnuncio.jpg"
+                img-alt="Image"
+                img-top
+                img-height="210px"
+                img-radius="15px"
+                style="max-width: 385px"
+                class="cardAdNew"
+              >
+                <b-row>
+                  <b-col cols="3">
+                    <img
+                      src="../assets/img/pedroNunes.jpg"
+                      class="cardAvatar"
+                      alt=""
+                      srcset=""
+                    />
+                  </b-col>
+                  <b-col cols="9" class="cardContent">
+                    <b-card-title class="cardTitle"
+                      >Pedro Nunes<small class="titleCourse">de TCAV</small>
+                    </b-card-title>
+                    <b-card-text class="cardText">
+                      Preciso de alguém que tenha experiência em edição de
+                      vídeo.
+                    </b-card-text>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </div>
+          </b-col>
+          
+          <b-col>
+            <div>
+              <b-card
+                img-src="../assets/img/pedroNunesAnuncio.jpg"
+                img-alt="Image"
+                img-top
+                img-height="210px"
+                img-radius="15px"
+                style="max-width: 385px"
+                class="cardAdNew"
+              >
+                <b-row>
+                  <b-col cols="3">
+                    <img
+                      src="../assets/img/pedroNunes.jpg"
+                      class="cardAvatar"
+                      alt=""
+                      srcset=""
+                    />
+                  </b-col>
+                  <b-col cols="9" class="cardContent">
+                    <b-card-title class="cardTitle"
+                      >Pedro Nunes<small class="titleCourse">de TCAV</small>
+                    </b-card-title>
+                    <b-card-text class="cardText">
+                      Preciso de alguém que tenha experiência em edição de
+                      vídeo.
+                    </b-card-text>
+                  </b-col>
+                </b-row>
+              </b-card>
+            </div>
+          </b-col>
+        </b-row>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <b-row>
           <b-col col lg="4" sm="6">
             <b-img src="assets/img/building.jpg"></b-img>
@@ -273,10 +359,14 @@ export default {
 
 .mainHeaders {
   text-align: left;
+  font-size: 45px;
 }
 
 .mainTexts {
   text-align: left;
+  font-size: 27px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 .mainButtons {
   width: 153px;
@@ -284,6 +374,8 @@ export default {
   font-family: var(--mediumFont);
   float: left;
   border-radius: 10px;
+    text-align: center !important;
+  color: white !important;
 }
 
 .orangeButtons {
@@ -296,6 +388,9 @@ export default {
 }
 
 .boxesPath {
+  display: flex;
+  align-items: center;
+  text-align: left;
   background-color: white;
   height: 90px;
   background: linear-gradient(
@@ -305,15 +400,56 @@ export default {
   );
   border-radius: 10px;
   backdrop-filter: blur(100rem);
-
+  font-family: var(--regularFont);
+  font-size: 22px;
+  color: #353535;
 }
 .boxes {
-    display: flex;
-  align-items: center;
-  width: 100px;
+  width: 520px;
 }
 
-.imageBox{
+.imageBox {
   width: 50px;
+  margin-top: 15px;
+  margin-left: 15px;
 }
+
+.divProjetos {
+  width: 650px;
+  margin-top: -60px;
+}
+
+.classAnuncios {
+  width: 650px;
+  margin-top: -45px;
+}
+
+.firstBlock {
+  margin-top: -30px;
+}
+
+.secondBlock {
+  margin-top: 40px;
+}
+
+.thirdBlock {
+  margin-top: 60px;
+}
+
+.fourthBlock {
+  margin-top: 60px;
+}
+
+.fifthBlock {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+
+
+
+
+
+
+
 </style>

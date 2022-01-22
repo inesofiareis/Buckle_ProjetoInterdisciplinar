@@ -1,10 +1,9 @@
 <template>
-  <b-navbar toggleable="lg" id="nav" type="dark" variant="dark">
+  <b-navbar toggleable="lg" id="nav">
     <b-navbar-brand href="#"><router-link to="/" class="navbar-brand">Buckle</router-link></b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="mx-auto navbarContent">
-        <b-nav-item><router-link to="/" class="nav-link" >Página inicial</router-link></b-nav-item>
         <b-nav-item><router-link to="/anuncios" class="nav-item nav-link">Anúncios</router-link></b-nav-item>
         <b-nav-item><router-link to="/projetos" class="nav-link">Projetos</router-link></b-nav-item>
         <b-nav-item><router-link to="/sobre" class="nav-link">Sobre</router-link></b-nav-item>
@@ -64,7 +63,7 @@ export default {
     logOut() {
       Swal.fire({
       title: 'Atenção!',
-      text: "Tens a certeza que queres sair da tua conta ?",
+      text: "Tens a certeza que queres sair da tua conta?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
