@@ -1,37 +1,37 @@
 <template>
     <div class="chat">
-        <b-row style="margin-right: 0;">
-            <b-col cols="3">
-                <div class="left-side-container">
-                    <div class="left-side-header">
-                        <b-dropdown id="dropdown-1" class="m-md-2">
-                            <template #button-content>{{getLoggedUser.first_name}}</template>
-                            <b-dropdown-item>Definições de perfil</b-dropdown-item>
-                            <b-dropdown-item>Os teus anúncios</b-dropdown-item>
-                            <b-dropdown-item>Os teus projetos</b-dropdown-item>
-                            <b-dropdown-item>Favoritos</b-dropdown-item>
-                            <b-dropdown-item>Avaliações</b-dropdown-item>
-                            <b-dropdown-divider></b-dropdown-divider>
-                            <b-dropdown-item @click="logOut()">Terminar sessão</b-dropdown-item>
-                        </b-dropdown>
-                    </div>
-                    <div class="left-side-content">
-                        <div class="card-container">
-                            <div class="card-img">
-                                <img src="../assets/img/CardExample.png" alt="">
-                            </div>
-                            <div class="card-text">
-                                <h4>Irene Costa</h4>
-                                <p>Contactada por ti - Anúncio oferta</p>
-                            </div>
+        <div class="left-column">
+            <!-- <b-col cols="2"> -->
+            <div class="left-side-container">
+                <div class="left-side-header">
+                    <b-dropdown id="profile-selec" class="m-md-2">
+                        <template #button-content>{{getLoggedUser.first_name}}</template>
+                        <b-dropdown-item>Definições de perfil</b-dropdown-item>
+                        <b-dropdown-item>Os teus anúncios</b-dropdown-item>
+                        <b-dropdown-item>Os teus projetos</b-dropdown-item>
+                        <b-dropdown-item>Favoritos</b-dropdown-item>
+                        <b-dropdown-item>Avaliações</b-dropdown-item>
+                        <b-dropdown-divider></b-dropdown-divider>
+                        <b-dropdown-item @click="logOut()">Terminar sessão</b-dropdown-item>
+                    </b-dropdown>
+                </div>
+                <div class="left-side-content">
+                    <div class="card-container">
+                        <div class="card-img">
+                            <img src="../assets/img/CardExample.png" alt="">
+                        </div>
+                        <div class="card-text">
+                            <h4>Irene Costa</h4>
+                            <p>Anúncio oferta</p>
                         </div>
                     </div>
                 </div>
-            </b-col>
-            <b-col cols="9">
-                <p>chat</p>
-            </b-col>
-        </b-row>
+            </div>
+            <!-- </b-col> -->
+        </div>
+        <div class="right-column">
+            <p>chat</p>
+        </div>
     </div>
 </template>
 
@@ -79,23 +79,39 @@ export default {
 </script>
 
 <style>
-    .chat > .row {
-        margin: 0 50px;
-    }
-
-    .left-side-container {
+    .chat {
+        display: flex;
         height: 100vh;
     }
 
+    .chat > .left-column {
+        width: 350px;
+        z-index: 1;
+        /* background: wheat; */
+    }
+
+    .chat > .right-column {
+        width: 100%;
+        z-index: 0;
+        background-color: #f1f1f1;
+    }
+
+    .left-side-header {
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 10px;
+        margin: 0px 20px 25px 20px;
+        padding-bottom: 7px;
+        border-bottom: 1px solid var(--border) !important;
+    }
+
     .left-side-content > .card-container > .card-img > img  {
-        width: 70px;
+        width: 60px;
         border-radius: 10px;
     }
 
     .card-img {
-        margin: 20px;
-        display: flex;
-        width: 100%;        
+        width: 150px !important;
     }
 
     .card-container {
@@ -106,8 +122,15 @@ export default {
 
     .left-side-content {
         background-color: var(--orange);
-        border-radius: 20px;
-        height: 100px;
+        margin: 0 20px;
+        border-radius: 10px;
+        height: 70px;
+    }
+
+    .left-side-container {
+        height: 100%;
+        box-shadow: rgba(0, 0, 0, 0.45) 15px -10px 20px -20px;
+        /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 10px; */
     }
 
     .card-container > .card-text {
@@ -119,14 +142,23 @@ export default {
     }
 
     .card-container > .card-text > h4 {
-        font-size: 25px;
+        font-size: 19px;
         margin: 0;
         font-weight: bold;
     }
 
     .card-container > .card-text > p {
-        font-size: 16px;
+        font-size: 15px;
         margin: 0;
     }
+
+    #profile-selec > button{
+        color: var(--black);
+        background: white;
+        border: none;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
 
 </style>
