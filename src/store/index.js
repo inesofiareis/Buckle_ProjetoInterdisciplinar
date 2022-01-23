@@ -44,7 +44,21 @@ export default new Vuex.Store({
       ],
       }
     ],
-    loggedUser: localStorage.loggedUser ? JSON.parse(localStorage.loggedUser) : null
+    loggedUser: localStorage.loggedUser ? JSON.parse(localStorage.loggedUser) : null,
+    ads : localStorage.ads ? JSON.parse(localStorage.ads) :[
+      {
+        title: "Test",
+        description: "blablablabla",
+        course :  "TSIW",
+        time : "24-50",
+        email :"user@esmad.ipp.pt",
+        img : "https://images.unsplash.com/flagged/photo-1595514191830-3e96a518989b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        img_bg: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+        id : 1,
+        typeAd: "Oferta"
+      }
+    ],
+    activeAd:null
   },
   getters: {
     isLoginValid: (state) => (email, password) => state.users.some(
@@ -56,6 +70,10 @@ export default new Vuex.Store({
     getUsers: (state) => state.users,
 
     getLoggedUser: (state) => state.loggedUser,
+
+    getAds : (state) => state.ads,
+    getAdsId: (state) => state.ads ? state.ads[state.ads.length - 1].id + 1 : 0,
+    getId:(state) => state.activeAd,
 
     ads: (state) => state.users,
   },
@@ -79,6 +97,17 @@ export default new Vuex.Store({
     SET_USER_ACTIVE(state,payload) {
       state.users[payload].status = 'active'
       localStorage.users = JSON.stringify(state.users)
+    },
+    SET_ADS(state, payload) {
+      state.ads.push(payload)
+      localStorage.ads = JSON.stringify(state.ads)
+      
+    },
+
+    SET_ACTIVE_AD(state,payload) {
+      state.activeAd = state.ads.find((ad) => ad.id === payload);
+      localStorage.activeAd = JSON.stringify(state.activeAd)
+      
     }
   },
   actions: {

@@ -118,6 +118,7 @@ export default {
         email: "",
         password: "",
         confirm_password: "",
+        favs: []
       },
     };
   },
@@ -137,6 +138,7 @@ export default {
         password: this.form.password,
         role: "user",
         status: "active",
+        favs: this.form.favs,
       };
 
       if (!this.isEmailRegistered(form_data.email)) {

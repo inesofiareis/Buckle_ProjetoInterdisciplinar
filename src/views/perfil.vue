@@ -8,13 +8,6 @@
                 <img src="../assets/imagem.png" width="30%" alt="">
                 <h4>{{getLoggedUser.first_name}} {{getLoggedUser.last_name}}</h4>
               </div>
-              <!-- <div class="buttonsPerfil">
-                <button class="btn btn-primary" autofocus @click="selector ='dadosPerfil'">Informação</button>
-                <button class="btn btn-primary" @click="selector ='anunciosAtivos'" >Anúncios Ativos</button>
-                <button class="btn btn-primary" @click="selector ='projetosAtivos'">Projetos Ativos</button>
-                <button class="btn btn-primary" @click="selector ='favoritosPerfil Page'">Favoritos</button>
-                <button class="btn btn-primary" @click="selector ='avaliacoesPerfil Page'">Avaliações</button>
-              </div> -->
               <div class="cardsProfile">
                 
                 <b-card no-body class="cardProfile">
@@ -86,93 +79,35 @@
                   <button class="titulo btn btn-primary" @click="selector ='addAnuncio Page'">Adicionar</button>
                 </div>
               </div>
+              <div>
+                
+              </div>
               <div class="adsContainer Perfil">
-                  <div class="row">
-                    <div class="Card col-md-3">
-                      <div class="card text-center">
-                          <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="backgroundAnuncio">
-                        <div class="FotoNome Card">
-                          <img src="../assets/imagem.png" alt="" width="30%">
-                          <button class="btn btn-warning" @click="selector ='editAd Page'">Editar</button>
-                          <div class="nome curso container">
-                            <h4>Daniel Freitas <h6>de TSIW</h6></h4>
+                  <div class="row" >
+                    <!-- <div class="cards" v-for="(ad,index) in getAds" :key="index" :value="ad"> -->
+                      <div class="Card col-md-4" v-for="(ad,index) in userAds" :key="index" :value="ad" >
+                        <div class="card text-center " >
+                          <div class="backgroundAnuncios">
+                            <img :src="ad.img_bg" alt="" class="backgroundAnuncio" >
                           </div>
-                        </div>  
-                          <p>Sou capaz de criar websites para quem precisar.</p>
-                      </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="Card col-md-3">
-                      <div class="card text-center">
-                          <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="backgroundAnuncio">
-                        <div class="FotoNome Card">
-                          <img src="../assets/imagem.png" alt="" width="30%">
-                          <button class="btn btn-warning" @click="selector ='editAd Page'">Editar</button>
-                          <div class="nome curso container">
-                            <h4>Daniel Freitas <h6>de TSIW</h6></h4>
+                          <div class="imagemAnuncios">
+                            <img :src="ad.img" class="imgAnuncio col-md-3">
+                            <div class="nome curso container">
+                              <h4>{{getLoggedUser.first_name}} {{getLoggedUser.last_name}}<h5>de {{getLoggedUser.course}}</h5></h4>
+                              <p>{{ad.description}}</p>
+                            </div>
                           </div>
-                        </div>  
-                          <p>Sou capaz de criar websites para quem precisar.</p>
+                            <button class="btn btn-warning" @click=" editSelectAd(ad.id) ">Editar</button>
+                            
+                          
+                        </div>
+                        <div class="col-md-1"></div>
                       </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="Card col-md-3">
-                      <div class="card text-center">
-                          <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="backgroundAnuncio">
-                        <div class="FotoNome Card">
-                          <img src="../assets/imagem.png" alt="" width="30%">
-                          <button class="btn btn-warning" @click="selector ='editAd Page'">Editar</button>
-                          <div class="nome curso container">
-                            <h4>Daniel Freitas <h6>de TSIW</h6></h4>
-                          </div>
-                        </div>  
-                          <p>Sou capaz de criar websites para quem precisar.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="Card col-md-3">
-                      <div class="card text-center">
-                          <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="backgroundAnuncio">
-                        <div class="FotoNome Card">
-                          <img src="../assets/imagem.png" alt="" width="30%">
-                          <button class="btn btn-warning" @click="selector ='editAd Page'">Editar</button>
-                          <div class="nome curso container">
-                            <h4>Daniel Freitas <h6>de TSIW</h6></h4>
-                          </div>
-                        </div>  
-                          <p>Sou capaz de criar websites para quem precisar.</p>
-                      </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="Card col-md-3">
-                      <div class="card text-center">
-                          <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="backgroundAnuncio">
-                        <div class="FotoNome Card">
-                          <img src="../assets/imagem.png" alt="" width="30%">
-                          <button class="btn btn-warning" @click="selector ='editAd Page'">Editar</button>
-                          <div class="nome curso container">
-                            <h4>Daniel Freitas <h6>de TSIW</h6></h4>
-                          </div>
-                        </div>  
-                          <p>Sou capaz de criar websites para quem precisar.</p>
-                      </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="Card col-md-3">
-                      <div class="card text-center">
-                          <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="backgroundAnuncio">
-                        <div class="FotoNome Card">
-                          <img src="../assets/imagem.png" alt="" width="30%">
-                          <button class="btn btn-warning" @click="selector ='editAd Page'">Editar</button>
-                          <div class="nome curso container">
-                            <h4>Daniel Freitas <h6>de TSIW</h6></h4>
-                          </div>
-                        </div>  
-                          <p>Sou capaz de criar websites para quem precisar.</p>
-                      </div>
-                    </div>
-                  </div>
+                    <!-- </div> -->
+                    
+                    
+                  </div>  
+                   
               </div>
             </div>
             <div v-if="selector === 'projetosAtivos'" class="projetosAtivos col-md-9">
@@ -190,7 +125,7 @@
                       <div class="card text-center">
                           <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="backgroundAnuncio">
                         <div class="FotoNome Card">
-                          <img src="../assets/imagem.png" alt="" width="30%">
+                          <img src="../assets/imagem.png" >
                           <button class="btn btn-warning" @click="selector ='editAd Page'">Editar</button>
                           <div class="nome curso container">
                             <h4>Daniel Freitas <h6>de TSIW</h6></h4>
@@ -245,7 +180,7 @@
                     <div class="col-md-1"></div>
                     <div class="Card col-md-3">
                       <div class="card text-center">
-                          <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" class="backgroundAnuncio">
+                          <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"  class="backgroundAnuncio">
                         <div class="FotoNome Card">
                           <img src="../assets/imagem.png" alt="" width="30%">
                           <button class="btn btn-warning" @click="selector ='editAd Page'">Editar</button>
@@ -354,47 +289,74 @@
             </div>
 
             <div v-if="selector === 'addAnuncio Page'" class="addAnuncio col-md-9">
-              <div class="titulo">
+              <form @submit.prevent="addAds">
+                <div class="titulo">
                 <div class="tituloAnuncios">
                   <h1>Criar Anúncio</h1>
+                  
                 </div> 
               </div>
               <div class="container dadosPerfil">
                 <div class="addAds tituloFoto">
-                  <div class="dadosContainer col-md-5">
-                  <label for="tituloAdsTxt">Titulo</label>
-                  <input type="text" class="inputsPerfil" id="tituloAdsTxt" >
-                </div>
-                <div class="col-md-3"></div>
-                <div class="dadosContainer col-md-3">
-                  <label for="tituloAdsTxt">Fotografia</label>
-                  <div class="container addAdsFoto">
-                    <button class="btn btn-warning">Escolher imagem (jpeg ou png)</button>
+                    <div class="dadosContainer col-md-3">
+                    <label for="tituloAdsTxt">Titulo</label>
+                    <input type="text" class="inputsPerfil" id="tituloAdsTxt" v-model="form.title">
                   </div>
-                </div>
+                  <div class="col-md-1"></div>
+                  <div class="dadosContainer col-md-3">
+                    <label for="imgTxt">Image</label>
+                    <input type="url"  id="imgTxt" placeholder="URL" class="inputsPerfil" v-model="form.img">
+                  </div>
+                  <div class="col-md-1"></div>
+                    <div class="dadosContainer col-md-3">
+                      <label for="bgImgTxt">Background Image</label>
+                      <input type="url"  id="bgImgTxt" placeholder="URL" class="inputsPerfil" v-model="form.img_bg">
+                    </div>
                 </div>
                 
                 <div class="dadosContainer col-md-11">
                   <label for="descriptionTxt">Descrição</label>
-                  <textarea  id="descriptionTxt" class="md-textarea form-control" rows="3"></textarea>
+                  <textarea  id="descriptionTxt" class="md-textarea form-control" rows="3" v-model="form.description"></textarea>
                 </div>
-                <div class="dadosContainer col-md-11">
-                  <label for="cursoTxt">Curso</label>
-                  <input type="text" class="inputsPerfil" id="cursoTxt" >
-                </div>
-                <div class="dadosContainer col-md-11">
-                  <label for="tempoTxt">Tempo necessário</label>
-                  <input type="text" class="inputsPerfil" id="tempoTxt">
-                </div>
+                
+                <div class="addAds cursoTipoTempo">
+                  <div class="dadosContainer col-md-3">
+                    <label for="cursoTxt">Curso</label>
+                    <select  id="cursoTxt" class="inputsPerfil" v-model="form.course" required>
+                      <option value=""  disabled>Escolha um curso</option>
+                      <option v-for="(course, index) in courses" :key="index" :value="course">
+                        {{course.text}}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="dadosContainer col-md-3">
+                    <label for="tipoTxt">Tipo de Anúncio</label>
+                    <select id="tipoTxt" class="inputsPerfil" v-model="form.typeAd" required>
+                       <option value="" disabled>Escolha um tipo</option>
+                      <option v-for="(typeAd, index) in typeAds" :key="index" :value="typeAd">
+                        {{typeAd.text}}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="dadosContainer col-md-3">
+                    <label for="tempoTxt">Tempo necessário</label>
+                    <input type="text" class="inputsPerfil" id="tempoTxt" v-model="form.time">
+                  </div>
+                </div> 
+
                 <div class="container saveButtonAds">
                   <div class="col-md-9"></div>
                   <div class="saveButtonAds col-md-2">
-                  <button class="btn btn-warning">Salvar</button>
+                  <input type="submit" class="btn btn-warning" value="Criar">
                 </div>
                 </div>
                 
                 
               </div>
+              </form>
+              
             </div>
 
             <div v-if="selector === 'addProjeto Page'" class="addProjeto col-md-9">
@@ -452,35 +414,46 @@
               </div>
               <div class="container dadosPerfil">
                 <div class="addAds tituloFoto">
-                  <div class="dadosContainer col-md-5">
-                  <label for="tituloAdsTxt">Titulo</label>
-                  <input type="text" class="inputsPerfil" id="tituloAdsTxt" >
-                </div>
-                <div class="col-md-3"></div>
-                <div class="dadosContainer col-md-3">
-                  <label for="tituloAdsTxt">Fotografia</label>
-                  <div class="container addAdsFoto">
-                    <button class="btn btn-warning">Escolher imagem (jpeg ou png)</button>
+                    <div class="dadosContainer col-md-3">
+                    <label for="tituloAdsTxt">Titulo</label>
+                    <input type="text" class="inputsPerfil" id="tituloAdsTxt"  :value="getId.title">
                   </div>
-                </div>
+                  <div class="col-md-1"></div>
+                  <div class="dadosContainer col-md-3">
+                    <label for="imgTxt">Image</label>
+                    <input type="url"  id="imgTxt" placeholder="URL" class="inputsPerfil" :value="getId.img">
+                  </div>
+                  <div class="col-md-1"></div>
+                    <div class="dadosContainer col-md-3">
+                      <label for="bgImgTxt">Background Image</label>
+                      <input type="url"  id="bgImgTxt" placeholder="URL" class="inputsPerfil" :value="getId.img_bg">
+                    </div>
                 </div>
                 
                 <div class="dadosContainer col-md-11">
                   <label for="descriptionTxt">Descrição</label>
-                  <textarea  id="descriptionTxt" class="md-textarea form-control" rows="3"></textarea>
+                  <textarea  id="descriptionTxt" class="md-textarea form-control" rows="3" :value="getId.description"></textarea>
                 </div>
-                <div class="dadosContainer col-md-11">
-                  <label for="cursoTxt">Curso</label>
-                  <input type="text" class="inputsPerfil" id="cursoTxt" >
-                </div>
-                <div class="dadosContainer col-md-11">
-                  <label for="tempoTxt">Tempo necessário</label>
-                  <input type="text" class="inputsPerfil" id="tempoTxt">
-                </div>
+                <div class="addAds cursoTipoTempo">
+                  <div class="dadosContainer col-md-3">
+                    <label for="cursoTxt">Curso</label>
+                    <input type="text"  id="cursoTxt" class="inputsPerfil" :value="getId.course.text">
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="dadosContainer col-md-3">
+                    <label for="tipoTxt">Tipo de Anúncio</label>
+                    <input type="text"  id="tipoTxt" class="inputsPerfil" :value="getId.typeAd.text">
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="dadosContainer col-md-3">
+                    <label for="tempoTxt">Tempo necessário</label>
+                    <input type="text" class="inputsPerfil" id="tempoTxt" :value="getId.time">
+                  </div>
+                </div> 
                 <div class="container saveButtonAds">
                   <div class="col-md-9"></div>
                   <div class="saveButtonAds col-md-2">
-                  <button class="btn btn-warning">Salvar</button>
+                  <button class="btn btn-warning" >Editar</button>
                 </div>
                 </div>
                 
@@ -543,7 +516,7 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex"
+import {mapGetters, mapMutations} from "vuex"
 import profileImage from "@/assets/imagem.png"
 import ratingComment from "@/assets/estrelas.png"
 
@@ -554,11 +527,71 @@ export default {
       selector: "dadosPerfil",
       profileImage: profileImage,
       ratingComment:ratingComment,
+
+      form: {
+        title: "",
+        description: "",
+        course: "",
+        time : "",
+        email : "",
+        img: "",
+        img_bg: "",
+        typeAds: ""
+
+        
+      },
+      
+      userAds:[],
+
+      courses:[
+        { value: 'tsiw', text: 'TSIW' },
+        { value: 'tcav', text: 'TCAV' },
+        { value: 'design-grafico', text: 'Design Gráfico' },
+        { value: 'design-industrial', text: 'Design Industrial'},
+        { value: 'fotografia', text: 'Fotografia'},
+        { value: 'multimedia', text: 'Multimédia'},
+      ],
+      typeAds:[
+        { value: 'oferta', text: 'Oferta' },
+        { value: 'procura', text: 'Procura' },
+      ]
+      
     
     }
   },
+
+  mounted () {
+    this.userAds = this.$store.state.ads.filter((ad) => ad.email == this.getLoggedUser.email)
+    
+  },
+
   computed: {
-    ...mapGetters(["getLoggedUser"])
+    ...mapGetters(["getLoggedUser", "getAds", "getAdsId", "getId", ]),
+   
+  },
+
+  methods: {
+    ...mapMutations(["SET_ADS", "SET_ACTIVE_AD"]),
+
+    
+
+    addAds(){
+      this.form.id = this.getAdsId;
+      this.form.email= this.getLoggedUser.email,
+
+      this.SET_ADS (this.form)
+      
+
+    },
+
+    editSelectAd(idEdit){
+
+      this.SET_ACTIVE_AD(idEdit)
+
+      this.selector ='editAd Page'
+    }
+
+    
   },
   
 };
@@ -623,12 +656,7 @@ export default {
   background-color:#F1F1F1;
   border: none;
 }
-.nome.curso.container{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
+
 
 .personComment{
   margin-bottom: 0rem;
@@ -667,6 +695,24 @@ export default {
 .backgroundAnuncio{
   border-radius: 5px;
   border: 1px solid;
+  width: 100%;
+  height:14rem;
+}
+
+.imagemAnuncios{
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.imgAnuncio{
+  border-radius: 5px;
+  border: 1px solid;
+  vertical-align: middle;
+  width: 5rem;
+  height:5rem;
+  object-fit: cover;
+  
 }
 .card.text-center{
   border: 1px solid ;
@@ -807,6 +853,10 @@ export default {
 }
 
 .addAds.tituloFoto{
+  display: flex;
+  flex-direction: row;
+}
+.addAds.cursoTipoTempo{
   display: flex;
   flex-direction: row;
 }

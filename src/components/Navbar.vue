@@ -92,6 +92,7 @@ export default {
 
   #nav {
     padding: 20px 100px !important;
+    background-color: var(--black);
   }
 
   #nav a a {
