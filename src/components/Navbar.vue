@@ -25,9 +25,9 @@
           </b-nav-item-dropdown>
         </b-nav-item>
         <b-nav-item v-else class="account-link">
-          <router-link :to="{ path: 'login' }" class="nav-item nav-link login" v-if="CurrentPath() == '/login'">Login</router-link>
-          <router-link :to="{ path: 'login' }" class="nav-item nav-link registo" v-else-if="CurrentPath() == '/registo'">Registo</router-link>
-          <router-link :to="{ path: 'login' }" class="nav-item nav-link" v-else>Entrar</router-link>
+          <router-link :to="{ name: 'Login' }" class="nav-item nav-link login" v-if="CurrentPath() == '/login'">Login</router-link>
+          <router-link :to="{ name: 'Login' }" class="nav-item nav-link registo" v-else-if="CurrentPath() == '/registo'">Registo</router-link>
+          <router-link :to="{ name: 'Login' }" class="nav-item nav-link" v-else>Entrar</router-link>
         </b-nav-item>
       </b-navbar-nav>
     </b-collapse>

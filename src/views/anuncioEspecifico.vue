@@ -3,41 +3,40 @@
     <b-container>
       <b-row>
         <b-col col lg="7">
-          <img class="adImage" src="../assets/img/ireneAnuncio.jpg" />
+          <img class="adImage" :src="adEspecific.img_bg" />
         </b-col>
         <b-col col lg="5">
           <div class="specificAdInfo">
-            <p class="adType">Anúncio do tipo ${}</p>
-            <h3 class="specificAdTitle">Fotografias</h3>
-            <div class="secondLine">
-              <p class="announcerName">Irene Costa</p>
+            <div class="text">
+              <p class="adType">Anúncio {{adEspecific.typeAd}}</p>
+              <h3 class="specificAdTitle">{{adEspecific.title}}</h3>
+              <div class="secondLine">
+                <p class="announcerName">{{users.find((user) => user.email == adEspecific.email).first_name + " " + users.find((user) => user.email == adEspecific.email).last_name}}</p>
+                <div class="containerFavourites" v-if="getLoggedUser">
+                  <a @click="removeFavourite()"  v-if="favs.find((fav) => fav.userEmail == loggedUser.email && fav.adId == adEspecific.id)"><i class="fas fa-bookmark" style="color: var(--orange);"></i></a>
+                  <a v-else @click="addFavourite()"><i class="far fa-bookmark"></i></a>
+                </div>
+              </div>
+              <div class="userContent">
+                <div class="adSpecificSummary">
+                  <p class="announcerDescription">Descrição</p>
+                  <p>
+                    {{adEspecific.description}}
+                  </p>
+                </div>
+                <div class="announcerCourse">
+                  <p class="courseWritten">Curso</p>
+                  <p class="courseName">{{adEspecific.course}}</p>
+                </div>
+                <div class="announcerTime">
+                  <p class="timeWritten">Tempo disponível</p>
+                  <p class="timeNeeded">{{adEspecific.time}}</p>
+                </div>
+              </div>
             </div>
-            <div class="containerFavourites">
-              <!-- icons -->
-              <p class="favourites">
-                <i class="favouritesNumber"> 35 </i> favoritos
-              </p>
+            <div class="button">
+              <b-button type="button">Contactar</b-button>
             </div>
-            <br />
-            <br />
-            <div class="adSpecificSummary">
-              <p>
-                Tiro fotografias de cenários para qualquer um de vós! Basta me
-                dizerem o que pretendem e quantas fotos necessitam, a partir daí
-                agilizamos o processo.
-              </p>
-            </div>
-            <div class="announcerCourse">
-              <p class="courseWritten">CURSO</p>
-              <p class="courseName">Fotografia</p>
-            </div>
-            <div class="announcerTime">
-              <p class="timeWritten">HORÁRIO</p>
-              <p class="timeNeeded">24-50 horas</p>
-            </div>
-            <button class="btn btn-primary btnInterested" type="button">
-              Tenho interesse
-            </button>
           </div>
         </b-col>
       </b-row>
@@ -46,19 +45,45 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex"
+import {mapGetters,mapMutations} from "vuex"
 
 export default {
   data () {
     return {
       adEspecific: {},
+      loggedUser: {},
+      users: [],
+      favs: [],
+      userEmail: "",
+      idAd: ""
     }
   },
   computed: {
-    ...mapGetters(["getAdSpecific"]),
+    ...mapGetters(["getAdSpecific", "getUsers","getFavs","getLoggedUser"]),
   },
   created() {
     this.adEspecific = this.getAdSpecific(this.$route.params.id)
+    this.users = this.getUsers
+    this.favs = this.getFavs
+    if(this.getLoggedUser) {
+      this.loggedUser = this.getLoggedUser
+    }
+  },
+  methods: {
+    ...mapMutations(["ADD_FAV","REMOVE_FAV"]),
+
+    addFavourite () {
+      const favData = {
+        userEmail: this.loggedUser.email,
+        adId: parseInt(this.$route.params.id)
+      }
+      this.ADD_FAV(favData)
+      console.log(this.favs);
+    },
+    removeFavourite() {
+      let idx = this.favs.indexOf(this.favs.find((fav) => fav.userEmail == this.loggedUser.email && fav.adId == this.adEspecific.id))
+      this.REMOVE_FAV(idx)
+    }
   }
 };
 </script>
@@ -69,6 +94,12 @@ export default {
   width: 100%;
   height: 100%;
   padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.specificAdInfo p {
+  margin: 0;
 }
 
 button {
@@ -96,21 +127,92 @@ button {
 }
 
 .specificAdTitle {
-  font-size: 55px;
+  font-size: 45px;
   line-height: 65px;
   font-family: var(--mediumFont);
   color: #353535;
 }
 
 .announcerName {
-  float: left;
+  margin: 0;
   font-size: 20px;
-  line-height: 24px;
   color: #353535;
   font-family: var(--regularFont);
 }
 
+
+.secondLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 7px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--black);
+}
+
 .containerFavourites {
-  float: right;
+  display: flex;
+    align-items: flex-end;
+}
+
+.containerFavourites i {
+  font-size: 25px;
+  margin-right: 10px;
+  transition: 0.3s ease;
+}
+
+.containerFavourites a {
+  text-decoration: none;
+  color: #353535;
+  cursor: pointer;
+}
+
+.containerFavourites a:hover i {
+  text-decoration: none;
+  color: var(--orange);
+}
+
+.containerFavourites p {
+  font-weight: bold;
+  margin: 0;
+  cursor:default;
+}
+
+.courseWritten {
+  font-weight: bold;
+}
+
+.announcerCourse {
+  margin-top: 15px;
+}
+
+.announcerDescription {
+  font-weight: bold;
+}
+
+.announcerTime {
+  margin-top: 15px;
+}
+
+.announcerTime .timeWritten {
+  font-weight: bold;
+}
+
+.button button {
+  background-color: var(--orange);
+  border: none;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.button button:hover {
+  background-color: var(--black);
+}
+
+.userContent {
+  margin-top: 30px;
 }
 </style>

@@ -15,7 +15,9 @@ export default new Vuex.Store({
         password: "Esmad_2122",
         role: "user",
         status: "active",
-        profileImg: "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif"
+        profileImg: "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
+        description: "",
+
       },
       {
         first_name: "Test",
@@ -26,7 +28,8 @@ export default new Vuex.Store({
         password: "Esmad_2122",
         role: "admin",
         status: "active",
-        profileImg: "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif"
+        profileImg: "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
+        description: "",
       },
     ],
     loggedUser: localStorage.loggedUser ? JSON.parse(localStorage.loggedUser) : null,
@@ -46,7 +49,7 @@ export default new Vuex.Store({
         title: "Video Promocional",
         description: "Sou vocacionada em edição de video. Contactem-me se precisarem de ajuda.",
         course :  "multimedia",
-        time : "24-50",
+        time : "50-60",
         email :"user@esmad.ipp.pt",
         img : "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
         img_bg: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
@@ -76,28 +79,26 @@ export default new Vuex.Store({
         typeAd: "Procura"
       },
     ],
+    favs : localStorage.favs ? JSON.parse(localStorage.favs) :[],
     activeAd:null
   },
   getters: {
-    isLoginValid: (state) => (email, password) => state.users.some(
-      (user) => user.email === email && user.password === password
-    ),
-    isEmailRegistered: (state) => (email) => state.users.some(
-      (user) => user.email === email
-    ),
+    isLoginValid: (state) => (email, password) => state.users.some((user) => user.email === email && user.password === password),
+    isEmailRegistered: (state) => (email) => state.users.some((user) => user.email === email),
     getUsers: (state) => state.users,
     getLoggedUser: (state) => state.loggedUser,
     getAds : (state) => state.ads,
     getAdsId: (state) => state.ads ? state.ads[state.ads.length - 1].id + 1 : 0,
     getId:(state) => state.activeAd,
     getAdSpecific:(state) => (id) => state.ads.find((ad)=> ad.id == id),
+    getFavs:(state) => state.favs,
+    getThisAdFav:(state) => (id) => state.favs.find((fav) => fav.adId == id),
     ads: (state) => state.users,
   },
   mutations: {
     SET_NEW_USER(state, payload) {
       state.users.push(payload)
-      localStorage.users = JSON.stringify(state.users)
-    },
+      localStorage.users = JSON.stringify(state.users)},
     SET_LOGGED_USER(state, payload) {
       state.loggedUser = state.users.find((user) => user.email === payload);
       localStorage.loggedUser = JSON.stringify(state.loggedUser);
@@ -117,13 +118,18 @@ export default new Vuex.Store({
     SET_ADS(state, payload) {
       state.ads.push(payload)
       localStorage.ads = JSON.stringify(state.ads)
-      
     },
-
     SET_ACTIVE_AD(state,payload) {
       state.activeAd = state.ads.find((ad) => ad.id === payload);
-      localStorage.activeAd = JSON.stringify(state.activeAd)
-      
+      localStorage.activeAd = JSON.stringify(state.activeAd) 
+    },
+    ADD_FAV(state,payload) {
+      state.favs.push(payload)
+      localStorage.favs = JSON.stringify(state.favs)
+    },
+    REMOVE_FAV(state,payload) {
+      state.favs.splice(payload,1)
+      localStorage.favs = JSON.stringify(state.favs)
     }
   },
   actions: {
