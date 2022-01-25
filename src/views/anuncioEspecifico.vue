@@ -41,6 +41,21 @@
         </b-col>
       </b-row>
     </b-container>
+    <b-container>
+      <div class="slideBg">
+        <div class="userImg">
+          <img :src="users.find((user) => user.email == adEspecific.email).profileImg" alt="">
+        </div>
+        <div class="userInfo">
+          <div class="header">
+            <h3>Sobre o criador</h3>
+          </div>
+          <div class="content">
+            <p>{{users.find((user) => user.email == adEspecific.email).description}}</p>
+          </div>
+        </div>
+      </div>
+    </b-container>
   </div>
 </template>
 
@@ -215,4 +230,46 @@ button {
 .userContent {
   margin-top: 30px;
 }
+
+.slideBg {
+  background: rgb(255,231,219);
+  background: linear-gradient(90deg, rgba(255,231,219,1) 0%, rgba(255,144,92,1) 100%);
+  color: rgb(83, 83, 83);
+  border-radius: 15px;
+  height: 135px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-shadow: rgb(0 0 0 / 15%) 0px 2px 8px;
+}
+
+.userImg img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+  left: 40px;
+}
+
+.userImg {
+  width: 33%;
+}
+
+.userInfo {
+  text-align: left;
+  width: 67%;
+  margin-right: 30px;
+}
+
+.userInfo .header h3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.userInfo .content p {
+  font-size: 16px;
+  font-weight: light;
+}
+
 </style>

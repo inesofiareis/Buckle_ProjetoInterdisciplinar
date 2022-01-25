@@ -222,4 +222,11 @@ export default {
     .form-message-container {
         margin-bottom: 20px;
     }
+
+    .form-submit button{
+        width: 100%;
+        background-color: var(--orange);
+        border: none;
+        font-weight: bold;
+    }
 </style>

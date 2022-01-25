@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: '/anuncios',
-    name: 'Anúncios',
+    name: 'Anuncios',
     component: anuncios
   },
   {

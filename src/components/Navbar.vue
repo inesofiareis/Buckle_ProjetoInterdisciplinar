@@ -1,16 +1,16 @@
 <template>
   <b-navbar toggleable="lg" id="nav">
-    <b-navbar-brand href="#"><router-link to="/" class="navbar-brand">Buckle</router-link></b-navbar-brand>
+    <b-navbar-brand href="#"><router-link :to="{ name: 'PaginaInicial' }" class="navbar-brand">Buckle</router-link></b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="mx-auto navbarContent">
-        <b-nav-item><router-link to="/anuncios" class="nav-item nav-link">Anúncios</router-link></b-nav-item>
+        <b-nav-item><router-link :to="{ name: 'Anuncios' }" class="nav-item nav-link">Anúncios</router-link></b-nav-item>
         <b-nav-item><router-link to="/projetos" class="nav-link">Projetos</router-link></b-nav-item>
         <b-nav-item><router-link to="/sobre" class="nav-link">Sobre</router-link></b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-item v-if="loggedUser()" class="profileZone">
-          <router-link to="/perfil"><img :src="loggedUser().profileImg" id="img_profile" alt=""></router-link>
+          <router-link :to="{ name: 'perfil' }"><img :src="loggedUser().profileImg" id="img_profile" alt=""></router-link>
           <b-nav-item-dropdown class="user-dropdown" >
             <template #button-content>{{loggedUser().first_name}}</template>
             <b-dropdown-item id="dropdown-perfil" href="#">Perfil</b-dropdown-item>
