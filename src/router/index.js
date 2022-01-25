@@ -6,6 +6,7 @@ import anuncioEspecifico from '../views/anuncioEspecifico.vue'
 import login from '../views/login.vue'
 import registo from '../views/registo.vue'
 import gestaoUtilizadores from '../views/adminUsers.vue'
+import gestaoAnuncios from '../views/adminAds.vue'
 import chat from '../views/chat.vue'
 import store from '../store/index.js'
 import perfil from '../views/perfil.vue'
@@ -24,8 +25,8 @@ const routes = [
     component: anuncios
   },
   {
-    path: '/anuncios/:anunciosID',
-    name: 'Detalhe dos anúncios',
+    path: '/anuncios/:id',
+    name: 'anuncioEspecifico',
     component: anuncioEspecifico
   },
   {
@@ -53,9 +54,18 @@ const routes = [
     }
   },
   {
-    path: '/admin/users',
+    path: '/admin/utilizadores',
     name: 'Gestão de utilizadores',
     component: gestaoUtilizadores,
+    meta: {
+      requiresAuth: true,
+      requiresAdmin: true
+    },
+  },
+  {
+    path: '/admin/anuncios',
+    name: 'Gestão de anuncios',
+    component: gestaoAnuncios,
     meta: {
       requiresAuth: true,
       requiresAdmin: true

@@ -139,6 +139,7 @@ export default {
         role: "user",
         status: "active",
         favs: this.form.favs,
+        profileImg: "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif"
       };
 
       if (!this.isEmailRegistered(form_data.email)) {

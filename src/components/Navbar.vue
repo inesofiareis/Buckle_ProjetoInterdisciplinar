@@ -9,7 +9,8 @@
         <b-nav-item><router-link to="/sobre" class="nav-link">Sobre</router-link></b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
-        <b-nav-item v-if="loggedUser()">
+        <b-nav-item v-if="loggedUser()" class="profileZone">
+          <router-link to="/perfil"><img :src="loggedUser().profileImg" id="img_profile" alt=""></router-link>
           <b-nav-item-dropdown class="user-dropdown" >
             <template #button-content>{{loggedUser().first_name}}</template>
             <b-dropdown-item id="dropdown-perfil" href="#">Perfil</b-dropdown-item>
@@ -159,6 +160,22 @@ export default {
 
   #dropdown-leave:hover {
     color: white !important;
+  }
+
+  #img_profile {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .profileZone a{
+    display: flex;
+    align-items: center;
+  }
+
+  .profileZone a img {
+    margin-right: 15px;
   }
 
 

@@ -5,7 +5,7 @@
           <div class="row mainContainer">
             <div class="card-body col-md-3">
               <div class="cardHeader">
-                <img src="../assets/imagem.png" width="30%" alt="">
+                <img :src="loggedUser.profileImg" style="width: 90px; height: 90px; object-fit: cover;" alt="">
                 <h4>{{getLoggedUser.first_name}} {{getLoggedUser.last_name}}</h4>
               </div>
               <div class="cardsProfile">
@@ -543,6 +543,8 @@ export default {
       
       userAds:[],
 
+      loggedUser:{},
+
       courses:[
         { value: 'tsiw', text: 'TSIW' },
         { value: 'tcav', text: 'TCAV' },
@@ -562,7 +564,7 @@ export default {
 
   mounted () {
     this.userAds = this.$store.state.ads.filter((ad) => ad.email == this.getLoggedUser.email)
-    
+    this.loggedUser = this.getLoggedUser
   },
 
   computed: {

@@ -46,23 +46,46 @@
 </template>
 
 <script>
-export default {};
+import {mapGetters} from "vuex"
+
+export default {
+  data () {
+    return {
+      adEspecific: {},
+    }
+  },
+  computed: {
+    ...mapGetters(["getAdSpecific"]),
+  },
+  created() {
+    this.adEspecific = this.getAdSpecific(this.$route.params.id)
+  }
+};
 </script>
 
 <style scoped>
 .specificAdInfo {
-  position: absolute;
   text-align: left;
-  width: 464px;
-  top: 116px;
+  width: 100%;
+  height: 100%;
+  padding-left: 40px;
+}
+
+button {
+  margin: 0;
+}
+
+.row {
+  margin-top: 30px;
+  margin-bottom: 80px;
 }
 
 .adImage {
   position: relative;
-  width: 708px;
+  object-fit: cover;
+  width: 100%;
   height: 451px;
-  top: 116px;
-  margin-bottom: 80px;
+  border-radius: 15px;
 }
 
 .adType {

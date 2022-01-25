@@ -33,90 +33,147 @@
       </div>
     </header>
 
-    <div class="filterRectangle">
-      <div class="div">
-        <div class="tipo">
-          <p>Tipo</p>
-          <div class="buttons">
-            <b-button>Procura</b-button>
-            <b-button>Oferta</b-button>
-          </div>
-        </div>
-        <div class="pesquisa">
-          <p>Pesquisa</p>
-          <input type="text">
-        </div>
-        <div class="licenciatura">
-          <p>Licenciatura</p>
-          <div class="form-selects">
-            <b-form-select class="form-select cursos"></b-form-select>
-          </div>
+    <b-row >
+      <div class="filterRectangle">
+        <div class="div">
+          <b-col cols="2">
+            <div class="pesquisa">
+              <p>Pesquisa</p>
+              <b-form-input type="text" v-model="search"></b-form-input>
+            </div>
+          </b-col>
+          <b-col cols="2">
+            <div class="licenciatura">
+              <p>Licenciatura</p>
+              <div class="form-selects">
+                <b-form-select v-model="graduation.selected" :options="graduation.options" class="form-select cursos"></b-form-select>
+              </div>
+            </div>
+          </b-col>
+          <b-col cols="2">
+            <div class="ordenar">
+              <p>Ordenar</p>
+              <div class="form-selects">
+                <b-form-select v-model="order.selected" :options="order.options" class="form-select cursos"></b-form-select>
+              </div>
+            </div>
+          </b-col>
+          <b-col cols="2">
+            <div class="tipo">
+              <p>Tipo</p>
+              <div class="buttons">
+                <b-button class="btn-procura" v-if="type.isProcura == false" @click="type.isProcura = true; type.isOferta = false" :class="{ active: type.isProcura }" >Procura</b-button>
+                <b-button class="btn-procura" v-if="type.isProcura == true" @click="type.isProcura = false" :class="{ active: type.isProcura }" >Procura</b-button>
+                <b-button class="btn-oferta" v-if="type.isOferta == false" @click="type.isProcura = false; type.isOferta = true" :class="{ active: type.isOferta }" >Oferta</b-button>
+                <b-button class="btn-oferta" v-if="type.isOferta == true" @click="type.isOferta = false" :class="{ active: type.isOferta }" >Oferta</b-button>
+              </div>
+            </div>
+          </b-col>
         </div>
       </div>
-    </div>
-
-    <b-row>
-      <b-col cols="4">
-        <div class="cardContainer">
-          <div class="cardImage">
-            <img src="../assets/img/pedroNunesAnuncio.jpg" alt="">
-          </div>
-          <div class="cardContent">
-            <div class="profileImage">
-              <img src="../assets/img/pedroNunes.jpg" alt="">
-            </div>
-            <div class="adData">
-              <div class="nome_curso">
-                <h4>Pedro Nunes</h4>
-                <p>&nbsp;&nbsp;de&nbsp;</p>
-                <p>Multimédia</p>
-              </div>
-              <div class="descricao">
-                <p>Preciso de alguém que tenha experiência em edição de vídeo.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </b-col>
     </b-row>
 
-                    <!-- <b-form>
-                        <b-row>
-                            <b-col cols="2">
-                            <b-tabs pills>
-                                <b-tab title="Procura" active ></b-tab>
-                                <b-tab title="Oferta"></b-tab>
-                            </b-tabs>
-                            </b-col>
-
-                            <b-col cols="2">
-                                <label for="searchInput">Pesquisa</label>
-                                <b-form-input type="search" id="searchInput" class="mb-2 mr-sm-2 mb-sm-0" ></b-form-input>
-                            </b-col>
-
-                            <b-col cols="2">
-                                <label for="courseFilter">Licenciatura</label>
-                                <b-form-select v-model="selected" :options="options" id="courseFilter" class="filterSelect"></b-form-select>
-                            </b-col>
-
-                            <b-col cols="2">
-                                <label for="orderFilter">Ordernar por</label>
-                                <b-form-select v-model="selected" :options="options" id="courseFilter" class="filterSelect"></b-form-select>
-                            </b-col>
-                            <b-col cols="2">
-                                <label for="categoryFilter">Categoria</label>
-                                <b-form-select v-model="selected" :options="options" id="courseFilter" class="filterSelect"></b-form-select>
-                            </b-col>
-
-
-
-                        </b-row>
-                </b-form> -->
-
-  
+    <b-row>
+      <b-col xl="3" lg="4" cols="6" style="margin-bottom: 20px;" v-for="(ad, index) in this.filteredAds" :key="index" >
+        <router-link :to="{ name: 'anuncioEspecifico', params: { id: ad.id }}">
+          <div class="cardContainer">
+            <div class="cardImage">
+              <img :src="ad.img_bg" alt="">
+            </div>
+            <div class="cardContent">
+              <div class="adData">
+                <div class="profileImage">
+                  <img :src="users.find((user) => user.email == ad.email).profileImg" alt="">
+                </div>
+                <div class="nome_curso">
+                  <h4>{{users.find((user) => user.email == ad.email).first_name + " " + users.find((user) => user.email == ad.email).last_name}}</h4>
+                  <div class="curso">
+                    <p>de&nbsp;</p>
+                    <p>{{ad.course}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="descricao">
+                <p>{{ad.description}}</p>
+              </div>
+            </div>
+          </div>
+        </router-link>
+      </b-col>
+    </b-row>
   </div>
-  
 </template>
+
+<script>
+import {mapGetters} from "vuex"
+
+export default {
+  data() {
+    return {
+      ads: [],
+      users: [],
+      graduation: {
+        selected: null,
+        options: [
+          { value: null, text: "Tudo" },
+          { value: "tsiw", text: "TSIW" },
+          { value: "tcav", text: "TCAV" },
+          { value: "design-grafico", text: "Design Gráfico" },
+          { value: "design-industrial", text: "Design Industrial" },
+          { value: "fotografia", text: "Fotografia" },
+          { value: "multimedia", text: "Multimédia" },
+        ],
+      },
+      order: {
+        selected: null,
+        options: [
+          { value: null, text: "Tudo" },
+          { value: "recentes", text: "Mais recentes" },
+          { value: "antigos", text: "Mais antigos" },
+        ],
+      },
+      type: {
+        isOferta: false,
+        isProcura: false,
+      },
+      search: ""
+    }
+  },
+  computed : {
+    ...mapGetters(["getUsers","getAds"]),
+
+    filteredAds () {
+      let filterAds = this.ads.slice(0)
+      for(let ad of filterAds) {
+        console.log((this.users.find((user) => user.email == ad.email)).first_name.toLowerCase().includes(this.search.toLowerCase()));
+      }
+      if(this.graduation.selected != null) {
+        filterAds = filterAds.filter((ad)=> ad.course == this.graduation.selected)
+      }
+      if(this.type.isOferta) {
+        filterAds = filterAds.filter((ad)=> ad.typeAd == "Oferta")
+      }
+      if(this.type.isProcura) {
+        filterAds = filterAds.filter((ad)=> ad.typeAd == "Procura")
+      }
+      if(this.search != "") {
+        filterAds = filterAds.filter((ad)=> ad.description.toLowerCase().replace(/\s/g, '').includes(this.search.toLowerCase().replace(/\s/g, '')) || this.users.find((user) => user.email == ad.email).first_name.toLowerCase().includes(this.search.toLowerCase().replace(/\s/g, '')) || this.users.find((user) => user.email == ad.email).last_name.toLowerCase().includes(this.search.toLowerCase().replace(/\s/g, '')) )
+        // filterAds = filterAds.filter((ad)=> this.users.find((user) => user.email == ad.email).first_name.toLowerCase().includes(this.search.toLowerCase()))
+        // filterAds = this.$store.state.ads.filter((ad) => this.users.find((user)=>user.email == ad.email).first_name.toLowerCase().includes(this.search.toLowerCase()))
+        // filterAds = this.$store.state.ads.filter((ad) => this.users.find((user)=>user.email == ad.email).last_name.toLowerCase().includes(this.search.toLowerCase()))
+      }
+      return filterAds
+    }
+  },
+
+  mounted () {
+    this.ads = this.getAds
+    this.users = this.getUsers
+  },
+}
+
+</script>
+
 
 <style scoped>
 
@@ -137,16 +194,45 @@ html, body {
   height: 150px;
   position: relative;
   bottom: 130px;
-  padding: 0 150px;
 }
 
 .filterRectangle > div {
-  background-color: var(--black);
+  background-color: var(--border);
   width: 100%;
   height: 100%;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   border-radius: 10px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+} 
+
+.filterRectangle .tipo .buttons .btn {
+  width: 100%;
+}
+
+.filterRectangle .tipo .buttons {
+  display: flex;
+}
+
+.filterRectangle .tipo {
+  display: flex;
+  flex-direction: column;
+}
+
+.filterRectangle div p {
+  color: rgb(92, 92, 92);
+  text-align: left;
+  font-weight: bold;
+}
+
+.btn-procura {
+  margin-right: 5px;
+}
+
+.btn-oferta {
+  margin-left: 5px;
 }
 
 .headerText {
@@ -173,15 +259,23 @@ line-height: 43px;
 
 .cardImage img {
   width: 100%;
+  height: 340px;
   border-radius: 5px 5px 0 0;
   object-fit: cover;
 }
 
+.cardImage {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 220px;
+}
+
 .profileImage img {
-  width: 75px;
-  height: 75px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 50%;
 }
 
 .row {
@@ -202,6 +296,20 @@ line-height: 43px;
   background-color: white;
   border-radius: 5px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: relative;
+  transition: 0.5s ease ;
+}
+
+.cardContainer:hover {
+  filter: grayscale(80%);
+}
+
+a {
+  text-decoration: none;
+}
+
+.cardContainer p, h4 {
+  color: var(--black);
 }
 
 .cardContent > .profileImage {
@@ -210,6 +318,25 @@ line-height: 43px;
 
 .cardContent {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 120px;
+}
+
+.descricao {
+  padding: 0 15px;
+  text-align: left;
+  font-size: 16px;
+  margin-top: 15px;
+  position: relative;
+}
+
+.descricao p{
+  height: 45px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .cardContent h4, .cardContent p {
@@ -218,28 +345,39 @@ line-height: 43px;
 
 .cardContent .adData .nome_curso {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.nome_curso > .curso {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .cardContent .adData {
-  margin: auto 0;
   text-align: left;
-  margin-left: 30px;
-  margin-right: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 10px;
 }
 
 .cardContent .adData .nome_curso h4{
   font-weight: bold;
-  font-size: 21px;
+  font-size: 14px;
 }
 
 .cardContent .adData .nome_curso p {
-  font-size: 15px;
-  color: grey;
+  font-size: 14px;
+  color: grey !important;
 }
 
-.adData .descricao {
-  font-size: 15px;
+.adData {
+  display: flex;
+}
+
+.tipo .buttons .active {
+  background: var(--orange);
+  border: none;
 }
 
 /* .btnFilter {

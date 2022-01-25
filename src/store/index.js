@@ -15,14 +15,7 @@ export default new Vuex.Store({
         password: "Esmad_2122",
         role: "user",
         status: "active",
-        ads: [{
-          type: "Procura",
-          title: "Website",
-          favourites: 1,
-          description: "Olá sou lindo",
-          nHours: "50000",
-          photo: "../assets/img/pedroNunesAnuncio.jpg",
-        },],
+        profileImg: "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif"
       },
       {
         first_name: "Test",
@@ -33,30 +26,55 @@ export default new Vuex.Store({
         password: "Esmad_2122",
         role: "admin",
         status: "active",
-        ads: [      {
-          type: "Oferta",
-          title: "Fotografias",
-          favourites: 30,
-          description: "Olá sou linda",
-          nHours: "25-30",
-          photo: "../assets/img/pedroNunesAnuncio.jpg",
-        },
-      ],
-      }
+        profileImg: "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif"
+      },
     ],
     loggedUser: localStorage.loggedUser ? JSON.parse(localStorage.loggedUser) : null,
     ads : localStorage.ads ? JSON.parse(localStorage.ads) :[
       {
-        title: "Test",
-        description: "blablablabla",
-        course :  "TSIW",
+        title: "Fotografias",
+        description: "Preciso que alguém me empreste uma câmara por um dia.",
+        course :  "design-grafico",
         time : "24-50",
         email :"user@esmad.ipp.pt",
-        img : "https://images.unsplash.com/flagged/photo-1595514191830-3e96a518989b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        img : "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
         img_bg: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
         id : 1,
+        typeAd: "Procura"
+      },
+      {
+        title: "Video Promocional",
+        description: "Sou vocacionada em edição de video. Contactem-me se precisarem de ajuda.",
+        course :  "multimedia",
+        time : "24-50",
+        email :"user@esmad.ipp.pt",
+        img : "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
+        img_bg: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+        id : 2,
         typeAd: "Oferta"
-      }
+      },
+      {
+        title: "Website",
+        description: "Estou disponivel para fazer um site ao teu gosto.",
+        course :  "tsiw",
+        time : "24-50",
+        email :"user@esmad.ipp.pt",
+        img : "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
+        img_bg: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+        id : 3,
+        typeAd: "Oferta"
+      },
+      {
+        title: "Modelos 3D",
+        description: "Alguém sabe criar modelos 3d online?",
+        course :  "tsiw",
+        time : "24-50",
+        email :"user@esmad.ipp.pt",
+        img : "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
+        img_bg: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+        id : 4,
+        typeAd: "Procura"
+      },
     ],
     activeAd:null
   },
@@ -68,13 +86,11 @@ export default new Vuex.Store({
       (user) => user.email === email
     ),
     getUsers: (state) => state.users,
-
     getLoggedUser: (state) => state.loggedUser,
-
     getAds : (state) => state.ads,
     getAdsId: (state) => state.ads ? state.ads[state.ads.length - 1].id + 1 : 0,
     getId:(state) => state.activeAd,
-
+    getAdSpecific:(state) => (id) => state.ads.find((ad)=> ad.id == id),
     ads: (state) => state.users,
   },
   mutations: {
