@@ -18,7 +18,7 @@
                     <td>{{ad.description}}</td>
                     <td><img :src="ad.img_bg" style="width: 75px;object-fit: cover;"></td>
                     <td>{{ad.typeAd}}</td>
-                    <td><b-button variant="danger">Remover</b-button> <b-button variant="info" style="color: white;">Detalhes</b-button> <b-button variant="dark">Editar</b-button></td>
+                    <td><b-button variant="danger" @click="remove_ad(index)">Remover</b-button> <b-button variant="info" style="color: white;">Detalhes</b-button> <b-button variant="dark">Editar</b-button></td>
                 </tr>
             </tbody>
         </table>
@@ -38,16 +38,38 @@ export default {
     this.ads = this.$store.state.ads;
   },
   methods: {
-    ...mapMutations(["SET_ADS"]),
+    ...mapMutations(["SET_ADS","REMOVE_AD"]),
 
     addAds () {
       this.form.id = this.getAdsId;
       this.form.email= this.getLoggedUser.email,
 
       this.SET_ADS (this.form)
+    },
+    remove_ad (i) {
+      Swal.fire({
+      title: 'Atenção!',
+      text: "Tens a certeza que queres remover o anúncio?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Informação!',
+            'Anúncio removido com sucesso!',
+            'Ok'
+          ).then(() => {
+            this.REMOVE_AD(i)
+          })
+        }
+      })
     }
   }
-};
+}
 </script>
 
 <style>

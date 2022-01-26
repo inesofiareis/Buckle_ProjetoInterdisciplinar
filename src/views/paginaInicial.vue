@@ -2,9 +2,8 @@
   <div class="home">
         <header>
         <div class="intro-body">
-          <b-container>
             <div class="imageContainer">
-              <img src="../assets/img/mainPage.jpg" class="img-fluid mainPageImg"></img>
+              <img src="../assets/img/mainPage.jpg" class="img-fluid mainPageImg">
             </div>
             <b-row>
               <b-col col mx="auto" class="headerTextMain">
@@ -16,7 +15,6 @@
                 </p>
               </b-col>
             </b-row>
-          </b-container>
         </div>
     </header>
 
@@ -30,8 +28,7 @@
                   <b-media tag="li" class="boxesPath">
                     <template #aside>
                       <img class="imageBox"
-                        src="../assets/img/landingPensar.png"
-                      ></img>
+                        src="../assets/img/landingPensar.png">
                     </template>
                     <h5 class="mt-0 mb-1">
                       Tens um projeto que precisa de ajuda extra
@@ -41,8 +38,7 @@
                   <b-media tag="li" class="my-4 boxesPath">
                     <template #aside>
                       <img class="imageBox"
-                        src="../assets/img/landingIdeia.png"
-                      ></img>
+                        src="../assets/img/landingIdeia.png">
                     </template>
 
                     <h5 class="mt-0 mb-1">
@@ -53,8 +49,7 @@
                   <b-media tag="li" class="boxesPath">
                     <template #aside>
                       <img class="imageBox"
-                        src="../assets/img/landingMaos.png"
-                      ></img>
+                        src="../assets/img/landingMaos.png">
                     </template>
 
                     <h5 class="mt-0 mb-1">
@@ -69,7 +64,7 @@
             <div class="p-5">
               <h2 class="display-4 mainHeaders mediumFont">Aqui na Buckle facilitamos-te a vida</h2>
               <p class="mainTexts regularFont">É simples e fácil</p>
-              <button class="btn btn-primary mainButtons blueButtons" type="button">Saber mais</button>
+              <button class="btn btn-primary mainButtons blueButtons" to="/sobre" type="button">Saber mais</button>
             </div>
           </b-col>
         </b-row>
@@ -81,9 +76,7 @@
         <b-row align-v="center">
           <b-col col lg="6" order="1">
             <div class="p-5">
-              <img
-                src="../assets/img/mainAnuncios.jpg"
-               style="width:550px; border-radius: 15px;"></img>
+              <img src="../assets/img/mainAnuncios.jpg" style="width:550px; border-radius: 15px;">
             </div>
           </b-col>
           <b-col col lg="6" order="2">
@@ -95,7 +88,7 @@
                 Explora todas as ofertas que os alunos da ESMAD estão a oferecer
                 ou cria um anúncio do tipo procura e vai direto ao assunto.
               </p>
-              <button class="btn btn-primary mainButtons orangeButtons" type="button">
+              <button class="btn btn-primary mainButtons orangeButtons" @click="$router.push({name: 'Anuncios'})" type="button">
                 Ver anúncios
               </button>
             </div>
@@ -120,7 +113,7 @@
                 Na Buckle, damos-te também a oportunidade de mostrar o que andas
                 a fazer às grandes empresas.
               </p>
-              <button class="btn btn-primary mainButtons blueButtons" type="button">
+              <button class="btn btn-primary mainButtons blueButtons" to="/projetos" type="button">
                 Ver projetos
               </button>
             </div>
@@ -132,33 +125,38 @@
     <section class="fourthBlock">
       <b-container>
         <div>
-          <h2 class="text-center">Os anúncios mais recentes</h2>
+          <h2 class="text-center regularFont">Os anúncios mais recentes</h2>
         </div>
-        <b-row>
-          <b-col col lg="4" sm="6">
-            <b-img src="assets/img/building.jpg"></b-img>
-            <h3 class="name">Daniel Freitas de TSIW</h3>
-            <p class="description">
-              Sou capaz de criar websites para quem precisar.
-            </p>
-          </b-col>
-          <b-col col lg="4" sm="6">
-            <b-img src="assets/img/building.jpg"></b-img>
-            <h3 class="name">Irene Costa de Fotografia</h3>
-            <p class="description">
-              Tiro fotografias de cenários para qualquer um de vós!
-            </p>
-          </b-col>
-          <b-col col lg="4" sm="6">
-            <b-img src="assets/img/building.jpg"></b-img>
-            <h3 class="name">Eduardo Silva de TCAV</h3>
-            <p class="description">
-              Se me disponibilizarem as gravações, posso fazer vídeos.
-            </p>
+        <b-row class="adRow">
+          <b-col class="adCol" xl="4" lg="4" cols="6" style="margin-bottom: 20px;" v-for="(ad, index) in ads" :key="index" >
+            <router-link v-if="index < 3" :to="{ name: 'anuncioEspecifico', params: { id: ad.id }}">
+              <div class="cardContainer">
+                <div class="cardImage">
+                  <img :src="ad.img_bg" alt="">
+                </div>
+                <div class="cardContent">
+                  <div class="adData">
+                    <div class="profileImage">
+                      <img :src="users.find((user) => user.email == ad.email).profileImg" alt="">
+                    </div>
+                    <div class="nome_curso">
+                      <h4>{{users.find((user) => user.email == ad.email).first_name + " " + users.find((user) => user.email == ad.email).last_name}}</h4>
+                      <div class="curso">
+                        <p>de&nbsp;</p>
+                        <p>{{ad.course}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="descricao">
+                    <p>{{ad.description}}</p>
+                  </div>
+                </div>
+              </div>
+            </router-link>
           </b-col>
         </b-row>
-        <div>
-          <b-button class="orangeButtons">Ver todos</b-button>
+        <div class="beforeLastButton">
+          <b-button class="orangeButtons lastButton" to="/anuncios">Ver todos</b-button>
         </div>
       </b-container>
     </section>
@@ -166,127 +164,12 @@
     <section class="fifthBlock">
       <b-container>
         <div>
-          <h2 class="text-center">Os projetos mais recentes</h2>
+          <h2 class="text-center regularFont">Os projetos mais recentes</h2>
         </div>
-        
-
-
         <b-row>
-          <b-col>
-            <div>
-              <b-card
-                img-src="../assets/img/pedroNunesAnuncio.jpg"
-                img-alt="Image"
-                img-top
-                img-height="210px"
-                img-radius="15px"
-                style="max-width: 385px"
-                class="cardAdNew"
-              >
-                <b-row>
-                  <b-col cols="3">
-                    <img
-                      src="../assets/img/pedroNunes.jpg"
-                      class="cardAvatar"
-                      alt=""
-                      srcset=""
-                    />
-                  </b-col>
-                  <b-col cols="9" class="cardContent">
-                    <b-card-title class="cardTitle"
-                      >Pedro Nunes<small class="titleCourse">de TCAV</small>
-                    </b-card-title>
-                    <b-card-text class="cardText">
-                      Preciso de alguém que tenha experiência em edição de
-                      vídeo.
-                    </b-card-text>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </div>
-          </b-col>
-          
-          <b-col>
-            <div>
-              <b-card
-                img-src="../assets/img/pedroNunesAnuncio.jpg"
-                img-alt="Image"
-                img-top
-                img-height="210px"
-                img-radius="15px"
-                style="max-width: 385px"
-                class="cardAdNew"
-              >
-                <b-row>
-                  <b-col cols="3">
-                    <img
-                      src="../assets/img/pedroNunes.jpg"
-                      class="cardAvatar"
-                      alt=""
-                      srcset=""
-                    />
-                  </b-col>
-                  <b-col cols="9" class="cardContent">
-                    <b-card-title class="cardTitle"
-                      >Pedro Nunes<small class="titleCourse">de TCAV</small>
-                    </b-card-title>
-                    <b-card-text class="cardText">
-                      Preciso de alguém que tenha experiência em edição de
-                      vídeo.
-                    </b-card-text>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </div>
-          </b-col>
         </b-row>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <b-row>
-          <b-col col lg="4" sm="6">
-            <b-img src="assets/img/building.jpg"></b-img>
-            <h3 class="name">Anúncio de TV</h3>
-            <p class="description">
-              Fomos para um estúdio e, com a ajuda do Filipe, arrasamos o meu
-              projeto, cujo objetivo era fazer um anúncio emotivo que fosse
-              feito para televisão.
-            </p>
-            <small>Hugo Gomes de Multimédia, Filipe Reis de Fotografia</small>
-          </b-col>
-          <b-col col lg="4" sm="6">
-            <b-img src="assets/img/building.jpg"></b-img>
-            <h3 class="name">Portfolio de vídeo</h3>
-            <p class="description">
-              O meu ponto forte é sem dúvida o vídeo e nunca achei um meio de o
-              mostrar. Com o Paulo, pude concretizar este meu desejo.
-            </p>
-            <small>Mafalda Aguiar de TCAV, Paulo Guedes de TSIW</small>
-          </b-col>
-          <b-col col lg="4" sm="6">
-            <b-img src="assets/img/building.jpg"></b-img>
-            <h3 class="name">What destination?</h3>
-            <p class="description">
-              Com o magnífico design do Diogo, realizei o website “Destination
-              Unknown”, que permite ao utilizador gerar um destino aleatório
-              para onde viajar.
-            </p>
-            <small>Mafalda Guedes de TSIW, Diogo Lopes de Design Gráfico</small>
-          </b-col>
-        </b-row>
-        <div>
-          <b-button class="blueButtons">Ver todos </b-button>
+        <div class="beforeLastButton">
+          <b-button class="blueButtons lastButton" to="/projetos">Ver todos </b-button>
         </div>
       </b-container>
     </section>
@@ -294,8 +177,24 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex"
+
 export default {
   name: "Home",
+  data() {
+    return {
+      ads: [],
+      users: [],
+    }
+  },
+  computed : {
+    ...mapGetters(["getUsers","getAds"]),
+  },
+  mounted () {
+   this.ads = this.getAds
+   this.users = this.getUsers
+  },
+
 };
 </script>
 
@@ -318,24 +217,46 @@ export default {
 .boldFont {
   font-family: var(--boldFont);
 }
+
+.beforeLastButton {
+  display: flex;
+  justify-content: center;
+}
+
+.lastButton{
+  margin-bottom: 60px;
+  font-family: var(--mediumFont);
+  width: 153px;
+  height: 44px;
+  border-radius: 10px;
+  text-align: center !important;
+  color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-center {
+  margin-bottom: 60px;
+}
+
+
+
 .imageContainer {
-  width: 1470px;
-  position: relative;
-  left: -85px;
-  top: 22px;
-  margin-bottom: 80px;
+  padding: 25px 25px 75px 25px;
 }
 
 .mainPageImg {
-  width: 1470px !important;
-  height: 600px !important;
+  width: 100% !important;
+  height: 650px !important;
   object-fit: cover;
   border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 .headerTextMain {
   position: absolute;
-  top: 30%;
+  top: 40%;
   left: 100px;
   width: 460px !important;
   text-align: left;
@@ -374,7 +295,7 @@ export default {
   font-family: var(--mediumFont);
   float: left;
   border-radius: 10px;
-    text-align: center !important;
+  text-align: center !important;
   color: white !important;
 }
 
@@ -383,8 +304,18 @@ export default {
   border: none !important;
 }
 
+.orangeButtons:hover {
+  background: var(--black) !important;
+}
+
 .blueButtons {
   background: #5266b7 !important;
+  transition: 0.4s ease;
+  border:none;
+}
+
+.blueButtons:hover {
+  background: var(--black) !important;
 }
 
 .boxesPath {
@@ -430,6 +361,9 @@ export default {
 
 .secondBlock {
   margin-top: 40px;
+  background-color: white;
+  margin: 0 25px;
+  border-radius: 15px;
 }
 
 .thirdBlock {
@@ -438,6 +372,15 @@ export default {
 
 .fourthBlock {
   margin-top: 60px;
+  padding-top: 20px;
+  background-color: white;
+  margin: 0 25px;
+  border-radius: 15px;
+}
+
+.fourthBlock .container div h2 {
+  font-weight: bold;
+  margin-bottom: 30px;
 }
 
 .fifthBlock {
@@ -445,11 +388,177 @@ export default {
   margin-bottom: 60px;
 }
 
+.cardAdNew {
+  height: 310px;
+  background: rgba(255, 255, 255, 0.692);
+  border: 1px solid rgba(53, 53, 53, 0.8);
+  box-sizing: border-box;
+  border-radius: 15px 15px 15px 15px;
+}
 
+.cardAvatar {
+  position: absolute;
+  width: 72.86px;
+  height: 72.86px;
+  left: 10px;
+  object-fit: cover;
+  border: 1px solid #353535;
+  box-sizing: border-box;
+  border-radius: 10px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
 
+.cardContent {
+  margin-top: 10px;
+}
 
+.cardTitle {
+  font-family: var(--mediumFont);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
 
+  color: #353535;
+}
 
+.titleCourse {
+  font-family: var(--regularFont);
+  font-size: 16px;
+  margin-left: 5px;
+  color: rgba(53, 53, 53, 0.48);
+}
 
+.cardText {
+  font-family: var(--regularFont);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  color: #353535;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 340px;
+  border-radius: 5px 5px 0 0;
+  object-fit: cover;
+}
+
+.cardImage {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 220px;
+}
+
+.profileImage img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.adRow {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 150px;
+}
+
+.adCol {
+  margin-bottom: 25px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: relative;
+  transition: 0.5s ease ;
+}
+
+.cardContainer:hover {
+  filter: grayscale(80%);
+}
+
+a {
+  text-decoration: none;
+}
+
+.cardContainer p, h4 {
+  color: var(--black);
+}
+
+.cardContent > .profileImage {
+  padding: 10px;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 120px;
+}
+
+.descricao {
+  padding: 0 15px;
+  text-align: left;
+  font-size: 16px;
+  margin-top: 15px;
+  position: relative;
+}
+
+.descricao p{
+  height: 45px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.cardContent h4, .cardContent p {
+  margin: 0;
+}
+
+.cardContent .adData .nome_curso {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.nome_curso > .curso {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cardContent .adData {
+  text-align: left;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 10px;
+}
+
+.cardContent .adData .nome_curso h4{
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.cardContent .adData .nome_curso p {
+  font-size: 14px;
+  color: grey !important;
+}
+
+.adData {
+  display: flex;
+}
 
 </style>

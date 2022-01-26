@@ -4,6 +4,7 @@
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="mx-auto navbarContent">
+        <b-nav-item><router-link :to="{ name: 'PaginaInicial' }" class="nav-item nav-link">Página Inicial</router-link></b-nav-item>
         <b-nav-item><router-link :to="{ name: 'Anuncios' }" class="nav-item nav-link">Anúncios</router-link></b-nav-item>
         <b-nav-item><router-link to="/projetos" class="nav-link">Projetos</router-link></b-nav-item>
         <b-nav-item><router-link to="/sobre" class="nav-link">Sobre</router-link></b-nav-item>
@@ -13,12 +14,12 @@
           <router-link :to="{ name: 'perfil' }"><img :src="loggedUser().profileImg" id="img_profile" alt=""></router-link>
           <b-nav-item-dropdown class="user-dropdown" >
             <template #button-content>{{loggedUser().first_name}}</template>
-            <b-dropdown-item id="dropdown-perfil" href="#">Perfil</b-dropdown-item>
-            <b-dropdown-item id="dropdown-anuncios" href="#">Anúncios</b-dropdown-item>
+            <b-dropdown-item id="dropdown-perfil" @click="$router.push({name: 'perfil'})" href="#">Perfil</b-dropdown-item>
+            <b-dropdown-item id="dropdown-anuncios" @click="$router.push({name: 'Anuncios'})" href="#">Anúncios</b-dropdown-item>
             <b-dropdown-item id="dropdown-projetos" href="#">Projetos</b-dropdown-item>
             <b-dropdown-divider v-if="this.$store.getters.getLoggedUser.role == 'admin'"></b-dropdown-divider>
             <b-dropdown-item id="dropdown-admin-users" @click="$router.push({name: 'Gestão de utilizadores'})" v-if="this.$store.getters.getLoggedUser.role == 'admin'" href="#">Gestão Utilizadores</b-dropdown-item>
-            <b-dropdown-item id="dropdown-admin-anuncios" v-if="this.$store.getters.getLoggedUser.role == 'admin'" href="#">Gestão Anúncios</b-dropdown-item>
+            <b-dropdown-item id="dropdown-admin-anuncios" @click="$router.push({name: 'Gestão de anuncios'})" v-if="this.$store.getters.getLoggedUser.role == 'admin'" href="#">Gestão Anúncios</b-dropdown-item>
             <b-dropdown-item id="dropdown-admin-projetos" v-if="this.$store.getters.getLoggedUser.role == 'admin'" href="#">Gestão Projetos</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
             <b-dropdown-item id="dropdown-leave" href="#" @click="logOut()">Sair</b-dropdown-item>
@@ -73,11 +74,12 @@ export default {
       cancelButtonText: 'Não'
       }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Adeus!',
-          'Foste deslogado com sucesso.',
-          'Ok'
-        ).then(() => {
+        Swal.fire({
+          title: 'Adeus!',
+          text: 'Foste deslogado com sucesso.',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Ok'
+        }).then(() => {
           this.$router.push({ name: "PaginaInicial"})
         })
         this.SIGNOUT_USER()

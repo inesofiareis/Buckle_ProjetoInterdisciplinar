@@ -130,6 +130,14 @@ export default new Vuex.Store({
     REMOVE_FAV(state,payload) {
       state.favs.splice(payload,1)
       localStorage.favs = JSON.stringify(state.favs)
+    },
+    REMOVE_AD(state,payload) {
+      state.ads.splice(payload,1)
+      localStorage.ads = JSON.stringify(state.ads)
+    },
+    REMOVE_USER(state,payload) {
+      state.users.splice(payload,1)
+      localStorage.users = JSON.stringify(state.users)
     }
   },
   actions: {
