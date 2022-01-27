@@ -132,7 +132,7 @@
             <router-link v-if="index < 3" :to="{ name: 'anuncioEspecifico', params: { id: ad.id }}">
               <div class="cardContainer">
                 <div class="cardImage">
-                  <img :src="ad.img_bg" alt="">
+                  <img :src="ad.imgBg" alt="">
                 </div>
                 <div class="cardContent">
                   <div class="adData">
