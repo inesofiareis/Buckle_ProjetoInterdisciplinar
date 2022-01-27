@@ -16,7 +16,7 @@ export default new Vuex.Store({
         role: "user",
         status: "active",
         profileImg: "https://images.unsplash.com/photo-1541534401786-2077eed87a74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
-        description: "",
+        description: "Estudante teste",
         imgBg: 'https://media.istockphoto.com/photos/live-video-streaming-media-entertainment-technology-on-laptop-and-picture-id1218395365?b=1&k=20&m=1218395365&s=170667a&w=0&h=DNmqcjDzFNqFqHH0LjdscsDiTzbqOpddOeN4LfePFSE='
 
       },
@@ -30,7 +30,7 @@ export default new Vuex.Store({
         role: "admin",
         status: "active",
         profileImg: "https://c.tenor.com/wMM9ZJsWz-YAAAAC/bruno-very-funny.gif",
-        description: "",
+        description: "Administrador",
         imgBg: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80'
       },
       {
@@ -43,7 +43,7 @@ export default new Vuex.Store({
         role: "user",
         status: "active",
         profileImg: "https://images.unsplash.com/photo-1521061972219-a1894a27a040?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80",
-        description: "",
+        description: "Aluno do 2 ano de tsiw",
         imgBg: 'https://media.istockphoto.com/photos/programming-code-abstract-technology-background-of-software-deve-picture-id537331500?b=1&k=20&m=537331500&s=170667a&w=0&h=-OawbbTR9TwfewLYKlaU-_cn1m_dq1WLpBK1qubFhGI='
       },
       {
@@ -56,7 +56,7 @@ export default new Vuex.Store({
         role: "user",
         status: "active",
         profileImg: "https://images.unsplash.com/photo-1529232356377-57971f020a94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
-        description: "",
+        description: "Aluna do 3 ano de multimédia",
         imgBg: 'https://images.unsplash.com/photo-1485894608275-668ad1c2d34c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
       },
       {
@@ -69,7 +69,7 @@ export default new Vuex.Store({
         role: "user",
         status: "active",
         profileImg: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-        description: "",
+        description: "Aluno do primeiro ano de tcav",
         imgBg: 'https://images.unsplash.com/photo-1476820865390-c52aeebb9891?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
       },
     ],
