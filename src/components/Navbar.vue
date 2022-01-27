@@ -11,7 +11,7 @@
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-item v-if="loggedUser()" class="profileZone">
-          <router-link :to="{ name: 'perfil' }"><img :src="loggedUser().profileImg" id="img_profile" alt=""></router-link>
+          <img @click="goProfile" :src="loggedUser().profileImg" id="img_profile" alt="">
           <b-nav-item-dropdown class="user-dropdown" >
             <template #button-content>{{loggedUser().first_name}}</template>
             <b-dropdown-item id="dropdown-perfil" @click="goProfile">Perfil</b-dropdown-item>
