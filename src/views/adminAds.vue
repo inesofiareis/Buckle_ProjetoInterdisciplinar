@@ -16,8 +16,8 @@
                     <td>{{index + 1}}</td> 
                     <td>{{ad.title}}</td>  
                     <td>{{ad.description}}</td>
-                    <td><img :src="ad.img_bg" style="width: 75px;object-fit: cover;"></td>
-                    <td>{{ad.typeAd}}</td>
+                    <td><img :src="ad.imgBg" style="width: 75px;object-fit: cover;"></td>
+                    <td>{{ad.typeAd.text}}</td>
                     <td><b-button variant="danger" @click="remove_ad(index)">Remover</b-button> <b-button variant="info" style="color: white;">Detalhes</b-button> <b-button variant="dark">Editar</b-button></td>
                 </tr>
             </tbody>

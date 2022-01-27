@@ -69,7 +69,7 @@ export default {
     this.users = this.getUsers;
   },
   methods: {
-    ...mapMutations(["SET_LOGGED_USER"]),
+    ...mapMutations(["SET_LOGGED_USER", "SET_ACTIVE_PROFILE"]),
 
     login() {
       if (this.isLoginValid(this.form.email, this.form.password)) {
@@ -77,13 +77,14 @@ export default {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Utilizador blockeado!",
+            text: "Utilizador bloqueado!",
             confirmButtonColor: '#3085d6',
             confirmButtonText: "Ok",
           });
         } 
         else {
           this.SET_LOGGED_USER(this.form.email);
+          this.SET_ACTIVE_PROFILE(this.form.email)
           Swal.fire({
             icon: "success",
             title: "Bem vindo/a",

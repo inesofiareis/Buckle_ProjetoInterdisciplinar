@@ -14,7 +14,7 @@
           <router-link :to="{ name: 'perfil' }"><img :src="loggedUser().profileImg" id="img_profile" alt=""></router-link>
           <b-nav-item-dropdown class="user-dropdown" >
             <template #button-content>{{loggedUser().first_name}}</template>
-            <b-dropdown-item id="dropdown-perfil" @click="$router.push({name: 'perfil'})" href="#">Perfil</b-dropdown-item>
+            <b-dropdown-item id="dropdown-perfil" @click="goProfile">Perfil</b-dropdown-item>
             <b-dropdown-item id="dropdown-anuncios" @click="$router.push({name: 'Anuncios'})" href="#">Anúncios</b-dropdown-item>
             <b-dropdown-item id="dropdown-projetos" href="#">Projetos</b-dropdown-item>
             <b-dropdown-divider v-if="this.$store.getters.getLoggedUser.role == 'admin'"></b-dropdown-divider>
@@ -54,7 +54,7 @@ export default {
     ...mapGetters(['getLoggedUser'])
   },
   methods: {
-    ...mapMutations(['SIGNOUT_USER']),
+    ...mapMutations(['SIGNOUT_USER', 'SET_ACTIVE_PROFILE']),
 
     CurrentPath() {
       return this.$route.path
@@ -85,6 +85,11 @@ export default {
         this.SIGNOUT_USER()
       }
       })
+    },
+
+    goProfile(){
+      this.SET_ACTIVE_PROFILE(this.getLoggedUser.email)
+      this.$router.push({name: 'perfil'})
     }
   }
   

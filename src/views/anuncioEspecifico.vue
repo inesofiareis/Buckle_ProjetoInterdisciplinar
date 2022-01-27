@@ -3,12 +3,12 @@
     <b-container>
       <b-row>
         <b-col col lg="7">
-          <img class="adImage" :src="adEspecific.img_bg" />
+          <img class="adImage" :src="getActiveProfile.imgBg" />
         </b-col>
         <b-col col lg="5">
           <div class="specificAdInfo">
             <div class="text">
-              <p class="adType">Anúncio {{adEspecific.typeAd}}</p>
+              <p class="adType">Anúncio {{adEspecific.typeAd.text}}</p>
               <h3 class="specificAdTitle">{{adEspecific.title}}</h3>
               <div class="secondLine">
                 <p class="announcerName">{{users.find((user) => user.email == adEspecific.email).first_name + " " + users.find((user) => user.email == adEspecific.email).last_name}}</p>
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="button">
-              <b-button type="button">Contactar</b-button>
+              <b-button type="button" @click="goProfileOtherPerson">Contactar</b-button>
             </div>
           </div>
         </b-col>
@@ -74,7 +74,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["getAdSpecific", "getUsers","getFavs","getLoggedUser"]),
+    ...mapGetters(["getAdSpecific", "getUsers","getFavs","getLoggedUser", "getActiveProfile"]),
   },
   created() {
     this.adEspecific = this.getAdSpecific(this.$route.params.id)
@@ -83,14 +83,18 @@ export default {
     if(this.getLoggedUser) {
       this.loggedUser = this.getLoggedUser
     }
+    this.SET_ACTIVE_PROFILE(this.adEspecific.email);
+    
+    this.SET_ACTIVE_AD(this.adEspecific.id)
   },
   methods: {
-    ...mapMutations(["ADD_FAV","REMOVE_FAV"]),
+    ...mapMutations(["ADD_FAV","REMOVE_FAV", "SET_ACTIVE_PROFILE", "SET_ACTIVE_AD"]),
 
     addFavourite () {
       const favData = {
         userEmail: this.loggedUser.email,
-        adId: parseInt(this.$route.params.id)
+        adId: parseInt(this.$route.params.id),
+        activeProfile : this.getActiveProfile
       }
       this.ADD_FAV(favData)
       console.log(this.favs);
@@ -98,6 +102,11 @@ export default {
     removeFavourite() {
       let idx = this.favs.indexOf(this.favs.find((fav) => fav.userEmail == this.loggedUser.email && fav.adId == this.adEspecific.id))
       this.REMOVE_FAV(idx)
+    },
+
+    goProfileOtherPerson(){
+      this.SET_ACTIVE_PROFILE(this.adEspecific.email);
+      this.$router.push({name: 'perfil'}) 
     }
   }
 };

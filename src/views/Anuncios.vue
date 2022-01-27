@@ -59,7 +59,7 @@
         <router-link :to="{ name: 'anuncioEspecifico', params: { id: ad.id }}">
           <div class="cardContainer">
             <div class="cardImage">
-              <img :src="ad.img_bg" alt="">
+              <img :src="users.find((user) => user.email == ad.email).imgBg" alt="">
             </div>
             <div class="cardContent">
               <div class="adData">
@@ -132,10 +132,10 @@ export default {
         filterAds = filterAds.filter((ad)=> ad.course == this.graduation.selected)
       }
       if(this.type.isOferta) {
-        filterAds = filterAds.filter((ad)=> ad.typeAd == "Oferta")
+        filterAds = filterAds.filter((ad)=> ad.typeAd.text == "Oferta")
       }
       if(this.type.isProcura) {
-        filterAds = filterAds.filter((ad)=> ad.typeAd == "Procura")
+        filterAds = filterAds.filter((ad)=> ad.typeAd.text == "Procura")
       }
       if(this.search != "") {
         filterAds = filterAds.filter((ad)=> ad.description.toLowerCase().replace(/\s/g, '').includes(this.search.toLowerCase().replace(/\s/g, '')) || this.users.find((user) => user.email == ad.email).first_name.toLowerCase().includes(this.search.toLowerCase().replace(/\s/g, '')) || this.users.find((user) => user.email == ad.email).last_name.toLowerCase().includes(this.search.toLowerCase().replace(/\s/g, '')) )
@@ -143,6 +143,9 @@ export default {
         // filterAds = this.$store.state.ads.filter((ad) => this.users.find((user)=>user.email == ad.email).first_name.toLowerCase().includes(this.search.toLowerCase()))
         // filterAds = this.$store.state.ads.filter((ad) => this.users.find((user)=>user.email == ad.email).last_name.toLowerCase().includes(this.search.toLowerCase()))
       }
+      // for(let user of this.users){
+      //   filterAds = filterAds.filter((ad) => ad.email == user.email)
+      // }
       return filterAds
     }
   },
