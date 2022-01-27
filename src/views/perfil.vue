@@ -540,8 +540,8 @@
 
         <div v-if="selectorOtherPerson == 'anunciosOtherPerson'" >
           <div class="adsContainer PerfilOtherPerson">
-            <div class="row col-md-12" >
-                <div class="Card col-md-4" v-for="(ad,index) in getAds" :key="index" :value="ad" >
+            <div class="row" >
+                <div class="Card col-md-4" v-for="(ad,index) in getAds" :key="index">
                   <div class="card text-center " v-if="getActiveProfile.email == ad.email">
                     <div class="backgroundAnuncios">
                       <img :src="getActiveProfile.imgBg" alt="" class="backgroundAnuncio" >
@@ -553,9 +553,9 @@
                         <p>{{ad.description}}</p>
                       </div>
                     </div>
-                     <router-link :to="{ name: 'anuncioEspecifico', params: { id: ad.id }}">
-                      <button class="btn btn-warning" @click=" editSelectAd(ad.id) ">Ver Anúncio</button> 
-                    </router-link>
+                      <router-link :to="{ name: 'anuncioEspecifico', params: { id: ad.id }}">
+                        <button class="btn btn-warning" @click=" editSelectAd(ad.id) ">Ver Anúncio</button> 
+                      </router-link>
                   </div>
                   
                 </div>
@@ -1039,6 +1039,10 @@ export default {
   flex-direction: row;
   align-items: center;
   
+}
+
+.image2 {
+  object-fit: cover;
 }
 
 .nome.curso.container p{

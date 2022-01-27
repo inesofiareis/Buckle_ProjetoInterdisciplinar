@@ -15,9 +15,9 @@ export default new Vuex.Store({
         password: "Esmad_2122",
         role: "user",
         status: "active",
-        profileImg: "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
+        profileImg: "https://images.unsplash.com/photo-1541534401786-2077eed87a74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
         description: "",
-        imgBg: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80'
+        imgBg: 'https://media.istockphoto.com/photos/live-video-streaming-media-entertainment-technology-on-laptop-and-picture-id1218395365?b=1&k=20&m=1218395365&s=170667a&w=0&h=DNmqcjDzFNqFqHH0LjdscsDiTzbqOpddOeN4LfePFSE='
 
       },
       {
@@ -29,9 +29,48 @@ export default new Vuex.Store({
         password: "Esmad_2122",
         role: "admin",
         status: "active",
-        profileImg: "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
+        profileImg: "https://c.tenor.com/wMM9ZJsWz-YAAAAC/bruno-very-funny.gif",
         description: "",
         imgBg: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80'
+      },
+      {
+        first_name: "João",
+        last_name: "Silva",
+        course: "tsiw",
+        gender: "Masculino",
+        email: "joao@esmad.ipp.pt",
+        password: "Esmad_2122",
+        role: "user",
+        status: "active",
+        profileImg: "https://images.unsplash.com/photo-1521061972219-a1894a27a040?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80",
+        description: "",
+        imgBg: 'https://media.istockphoto.com/photos/programming-code-abstract-technology-background-of-software-deve-picture-id537331500?b=1&k=20&m=537331500&s=170667a&w=0&h=-OawbbTR9TwfewLYKlaU-_cn1m_dq1WLpBK1qubFhGI='
+      },
+      {
+        first_name: "Leonor",
+        last_name: "Campos",
+        course: "multimedia",
+        gender: "Masculino",
+        email: "leonor@esmad.ipp.pt",
+        password: "Esmad_2122",
+        role: "user",
+        status: "active",
+        profileImg: "https://images.unsplash.com/photo-1529232356377-57971f020a94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
+        description: "",
+        imgBg: 'https://images.unsplash.com/photo-1485894608275-668ad1c2d34c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+      },
+      {
+        first_name: "Tiago",
+        last_name: "Amaral",
+        course: "tcav",
+        gender: "Masculino",
+        email: "tiago@esmad.ipp.pt",
+        password: "Esmad_2122",
+        role: "user",
+        status: "active",
+        profileImg: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        description: "",
+        imgBg: 'https://images.unsplash.com/photo-1476820865390-c52aeebb9891?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
       },
     ],
     loggedUser: localStorage.loggedUser ? JSON.parse(localStorage.loggedUser) : null,
@@ -39,7 +78,7 @@ export default new Vuex.Store({
       {
         title: "Fotografias",
         description: "Preciso que alguém me empreste uma câmara por um dia.",
-        course :  "design grafico",
+        course :  "multimedia",
         time : "24-50",
         email :"user@esmad.ipp.pt",
         profileImg : "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
@@ -48,37 +87,37 @@ export default new Vuex.Store({
         typeAd: { value: 'oferta', text: 'Oferta' }
       },
       {
-        title: "Video Promocional",
-        description: "Sou vocacionada em edição de video. Contactem-me se precisarem de ajuda.",
-        course :  "multimedia",
-        time : "50-60",
-        email :"user@esmad.ipp.pt",
+        title: "Fotografias da faculdade",
+        description: "Alguém consegue arranjar fotos da ESMAD?",
+        course :  "tcav",
+        time : "24-50",
+        email :"tiago@esmad.ipp.pt",
         profileImg : "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
         imgBg: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80',
         id : 2,
-        typeAd: { value: 'oferta', text: 'Oferta' }
+        typeAd: { value: 'procura', text: 'Procura' }
       },
       {
-        title: "Website",
-        description: "Estou disponivel para fazer um site ao teu gosto.",
+        title: "Programação",
+        description: "Sou aluno do 3º ano de tsiw e posso ajudar alunos que precisem",
         course :  "tsiw",
         time : "24-50",
-        email :"user@esmad.ipp.pt",
+        email :"joao@esmad.ipp.pt",
         profileImg : "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
         imgBg: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80',
         id : 3,
-        typeAd: { value: 'procura', text: 'Procura' }
+        typeAd: { value: 'oferta', text: 'Oferta' }
       },
       {
-        title: "Modelos 3D",
-        description: "Alguém sabe criar modelos 3d online?",
-        course :  "tsiw",
+        title: "Programação",
+        description: "Estou disponivel para fazer sessões fotográficas",
+        course :  "multimedia",
         time : "24-50",
-        email :"user@esmad.ipp.pt",
+        email :"leonor@esmad.ipp.pt",
         profileImg : "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
         imgBg: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80',
         id : 4,
-        typeAd: { value: 'procura', text: 'Procura' }
+        typeAd: { value: 'oferta', text: 'Oferta' }
       },
     ],
     favs : localStorage.favs ? JSON.parse(localStorage.favs) :[],

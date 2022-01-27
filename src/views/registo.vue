@@ -142,7 +142,7 @@ export default {
         status: "active",
         favs: this.form.favs,
         description: this.form.description,
-        profileImg: "https://i.pinimg.com/originals/7c/19/75/7c197545ca20fab203abb8b415de34e2.gif",
+        profileImg: "https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png",
         imgBg: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80'
       };
 
