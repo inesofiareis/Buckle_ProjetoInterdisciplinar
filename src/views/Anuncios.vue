@@ -232,7 +232,7 @@ html, body {
 .headerTitle{
 font-weight: 500;
 font-size: 96px;
-line-height: 114px;
+line-height: 100px;
 }
 
 .headerSubTitle{

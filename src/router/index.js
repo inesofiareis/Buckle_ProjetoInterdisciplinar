@@ -10,6 +10,7 @@ import gestaoAnuncios from '../views/adminAds.vue'
 import chat from '../views/chat.vue'
 import store from '../store/index.js'
 import perfil from '../views/perfil.vue'
+import sobre from '../views/sobre.vue'
 
 Vue.use(VueRouter)
 
@@ -78,8 +79,12 @@ const routes = [
     meta: {
       requiresAuth: true,
     }
-  }
-
+  },
+  {
+    path: '/sobre',
+    name: 'sobre',
+    component: sobre
+  },
 ]
 
 const router = new VueRouter({

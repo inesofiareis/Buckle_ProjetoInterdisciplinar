@@ -121,6 +121,10 @@ export default {
     margin: 0 25px;
   }
 
+  .nav-item > a > a{
+    font-size: 16px;
+  }
+
   .account-link > a > .login {
     color: var(--orange) !important;
   }
@@ -179,6 +183,7 @@ export default {
   .profileZone a{
     display: flex;
     align-items: center;
+    font-size: 16px;
   }
 
   .profileZone a img {

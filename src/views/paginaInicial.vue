@@ -270,7 +270,7 @@ export default {
 
 .headerTitleMain {
   font-weight: 500;
-  font-size: 55px;
+  font-size: 50px;
 }
 
 .headerSubTitleMain {
@@ -280,12 +280,12 @@ export default {
 
 .mainHeaders {
   text-align: left;
-  font-size: 45px;
+  font-size: 40px;
 }
 
 .mainTexts {
   text-align: left;
-  font-size: 27px;
+  font-size: 22px;
   margin-top: 20px;
   margin-bottom: 30px;
 }
